@@ -6,23 +6,26 @@ import Typewriter from './components/Typewriter';
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white px-6 py-12 relative overflow-hidden">
-      
+
       {/* Ambient background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#00e5bf] opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto fade-up relative z-10">
 
         {/* ================= Intro ================= */}
-        <h1 className="text-4xl font-bold mb-4 tracking-tight">
-          Vikramaditya Mishra
-        </h1>
-
-        <p className="text-lg text-[#00e5bf]/90 font-medium font-mono mb-8 min-h-[1.75rem]">
-          <Typewriter text="AI Engineer | Generative AI | LLM" speed={60} delay={400} />
-        </p>
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 mt-4">
+          <div>
+            <h1 className="text-4xl sm:text-5xl font-bold mb-4 tracking-tight">
+              Vikramaditya Mishra
+            </h1>
+            <p className="text-lg sm:text-xl text-[#00e5bf]/90 font-medium font-mono min-h-[1.75rem]">
+              <Typewriter text="AI Engineer | Generative AI | LLM" speed={60} delay={400} />
+            </p>
+          </div>
+        </div>
 
         {/* ================= About ================= */}
-        <section className="mb-14 fade-up delay-1">
+        <section id="about" className="mb-14 fade-up delay-1">
           <h2 className="text-2xl font-semibold mb-5 flex items-center gap-3 tracking-tight">
             <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             About
@@ -30,19 +33,19 @@ export default function Home() {
 
           <div className="text-gray-400 space-y-4 leading-relaxed">
             <p>
-              I am a passionate <span className="text-gray-200 font-medium">AI/ML Engineer</span> and student with a focus on building scalable, high-impact generative AI solutions.
+              I am a passionate <span className="text-gray-200 font-medium">AI/ML Engineer</span> and student with a focus on building scalable, high-impact <span className="text-gray-200 font-medium">Generative AI solutions</span>.
             </p>
             <p>
-              My technical expertise revolves around architecting intelligent workflows using <span className="text-gray-200 font-medium">AI Agents, LangChain, LangGraph, NLP,</span> and <span className="text-gray-200 font-medium">Vector Databases</span>. I specialize in turning complex data into production-ready RAG systems and robust machine learning applications.
+              My technical expertise revolves around architecting intelligent workflows using <span className="text-gray-200 font-medium">AI Agents, LangChain, LangGraph, NLP,</span> and <span className="text-gray-200 font-medium">Vector Databases</span>. I specialize in turning complex data into production-ready <span className="text-gray-200 font-medium">RAG Systems</span> and robust <span className="text-gray-200 font-medium">Machine Learning Applications</span>.
             </p>
             <p>
-              When I'm not coding, you can find me exploring the latest AI research papers, experimenting with new open-source models, or sharing my thoughts and discussing new technologies on Twitter and LinkedIn.
+              When I'm not coding, you can find me exploring the latest <span className="text-gray-200 font-medium">AI research papers</span>, experimenting with new <span className="text-gray-200 font-medium">open-source models</span>, or sharing my thoughts and discussing new technologies on <a href="https://x.com/kyunbhaii" target="_blank" rel="noopener noreferrer" className="text-gray-200 font-medium relative group inline-block transition-colors hover:text-[#00e5bf]">X<span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span></a> and <a href="https://www.linkedin.com/in/vikramaditya-mishra-8a9a4b210/" target="_blank" rel="noopener noreferrer" className="text-gray-200 font-medium relative group inline-block transition-colors hover:text-[#00e5bf]">LinkedIn<span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span></a>.
             </p>
           </div>
         </section>
 
         {/* ================= Experience ================= */}
-        <section className="fade-up delay-2">
+        <section id="experience" className="fade-up delay-2">
           <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
             <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             Experience
@@ -61,16 +64,16 @@ export default function Home() {
 
                 <ul className="mt-4 space-y-2 text-gray-400 text-sm">
                   <li className="flex items-start">
-                      <span className="mr-2 text-gray-600">{"•"}</span>
-                      <span>Assisted in preparing, cleaning, and structuring customer feedback datasets (chat logs and surveys) using Python, NLTK, spaCy, and SQL.</span>
+                    <span className="mr-2 text-gray-600">{"•"}</span>
+                    <span>Assisted in preparing, cleaning, and structuring customer feedback datasets (chat logs and surveys) using Python, NLTK, spaCy, and SQL.</span>
                   </li>
                   <li className="flex items-start">
-                      <span className="mr-2 text-gray-600">{"•"}</span>
-                      <span>Explored and implemented NLP techniques, including LSTM-based sentiment analysis, keyword extraction, and basic topic modeling to identify customer pain points and satisfaction drivers.</span>
+                    <span className="mr-2 text-gray-600">{"•"}</span>
+                    <span>Explored and implemented NLP techniques, including LSTM-based sentiment analysis, keyword extraction, and basic topic modeling to identify customer pain points and satisfaction drivers.</span>
                   </li>
                   <li className="flex items-start">
-                      <span className="mr-2 text-gray-600">{"•"}</span>
-                      <span>Contributed to insights that supported data-driven discussions for improving product features, customer experience, and internal decision-making.</span>
+                    <span className="mr-2 text-gray-600">{"•"}</span>
+                    <span>Contributed to insights that supported data-driven discussions for improving product features, customer experience, and internal decision-making.</span>
                   </li>
                 </ul>
               </div>
@@ -79,7 +82,7 @@ export default function Home() {
         </section>
 
         {/* ================= Featured Projects ================= */}
-        <section className="mt-20 fade-up delay-3">
+        <section id="projects" className="mt-20 fade-up delay-3">
           <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
             <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             Featured Projects
@@ -135,7 +138,7 @@ export default function Home() {
         </section>
 
         {/* ================= Skills ================= */}
-        <section className="mt-20 fade-up delay-4">
+        <section id="skills" className="mt-20 fade-up delay-4">
           <h2 className="text-2xl font-semibold mb-8 flex items-center gap-3 tracking-tight">
             <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             Skills
@@ -144,35 +147,35 @@ export default function Home() {
           <div className="border border-gray-800 p-6 sm:p-8 rounded-2xl">
             <div className="space-y-6">
 
-            {/* Row 1 */}
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                { title: "AI Systems", skills: ["RAG", "LangChain", "Vector DBs"] },
-                { title: "Machine Learning", skills: ["PyTorch", "TF", "Sklearn", "YOLO"] },
-                { title: "Data & Analysis", skills: ["Pandas", "NumPy", "Matplotlib"] }
-              ].map((s) => (
-                <SkillCard key={s.title} title={s.title} skills={s.skills} />
-              ))}
-            </div>
-
-            {/* Row 2 */}
-            <div className="flex justify-center">
-              <div className="grid md:grid-cols-2 gap-6 max-w-2xl w-full">
+              {/* Row 1 */}
+              <div className="grid md:grid-cols-3 gap-6">
                 {[
-                  { title: "Backend", skills: ["FastAPI", "Docker", "Git"] },
-                  { title: "Languages", skills: ["Python", "SQL", "C++"] }
+                  { title: "AI Systems", skills: ["RAG", "LangChain", "Vector DBs"] },
+                  { title: "Machine Learning", skills: ["PyTorch", "TF", "Sklearn", "YOLO"] },
+                  { title: "Data & Analysis", skills: ["Pandas", "NumPy", "Matplotlib"] }
                 ].map((s) => (
                   <SkillCard key={s.title} title={s.title} skills={s.skills} />
                 ))}
               </div>
-            </div>
+
+              {/* Row 2 */}
+              <div className="flex justify-center">
+                <div className="grid md:grid-cols-2 gap-6 max-w-2xl w-full">
+                  {[
+                    { title: "Backend", skills: ["FastAPI", "Docker", "Git"] },
+                    { title: "Languages", skills: ["Python", "SQL", "C++"] }
+                  ].map((s) => (
+                    <SkillCard key={s.title} title={s.title} skills={s.skills} />
+                  ))}
+                </div>
+              </div>
 
             </div>
           </div>
         </section>
 
-{/* ================= Achievements ================= */}
-        <section className="mt-20 fade-up delay-5">
+        {/* ================= Achievements ================= */}
+        <section id="achievements" className="mt-20 fade-up delay-5">
           <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
             <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             Achievements
@@ -180,7 +183,7 @@ export default function Home() {
 
           <div className="border border-gray-800 p-6 sm:p-8 rounded-2xl bg-[#0a0a0a]/50">
             <div className="relative border-l-2 border-gray-800 ml-3 pl-6 space-y-10 py-2">
-              
+
               {/* IFERP */}
               <div className="relative group">
                 <span className="w-3 h-3 absolute -left-[31px] rounded-full bg-[#00e5bf] shadow-[0_0_10px_rgba(0,229,191,0.6)] mt-1.5 group-hover:scale-125 transition-transform duration-300"></span>
@@ -200,8 +203,8 @@ export default function Home() {
                 </div>
                 <ul className="mt-2 text-gray-400 text-sm">
                   <li className="flex items-start">
-                      <span className="mr-2 text-gray-600">{"•"}</span>
-                      <span>Paper accepted at IFERP International Conference on "Real-Time Sign Language Detection Using CNN and OpenCV" (2024).</span>
+                    <span className="mr-2 text-gray-600">{"•"}</span>
+                    <span>Paper accepted at IFERP International Conference on "Real-Time Sign Language Detection Using CNN and OpenCV" (2024).</span>
                   </li>
                 </ul>
               </div>
@@ -216,12 +219,12 @@ export default function Home() {
                 </div>
                 <ul className="mt-2 space-y-2 text-gray-400 text-sm">
                   <li className="flex items-start">
-                      <span className="mr-2 text-gray-600">{"•"}</span>
-                      <span>Executive member at Google Developer Student Clubs.</span>
+                    <span className="mr-2 text-gray-600">{"•"}</span>
+                    <span>Executive member at Google Developer Student Clubs.</span>
                   </li>
                   <li className="flex items-start">
-                      <span className="mr-2 text-gray-600">{"•"}</span>
-                      <span>Helped organize multiple technical and ML-focused events under GDSC.</span>
+                    <span className="mr-2 text-gray-600">{"•"}</span>
+                    <span>Helped organize multiple technical and ML-focused events under GDSC.</span>
                   </li>
                 </ul>
               </div>
@@ -231,7 +234,7 @@ export default function Home() {
         </section>
 
         {/* ================= Education ================= */}
-        <section className="mt-20 fade-up delay-5">
+        <section id="education" className="mt-20 fade-up delay-5">
           <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
             <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             Education
@@ -239,7 +242,7 @@ export default function Home() {
 
           <div className="border border-gray-800 p-6 sm:p-8 rounded-2xl bg-[#0a0a0a]/50">
             <div className="relative border-l-2 border-gray-800 ml-3 pl-6 space-y-10 py-2">
-              
+
               <div className="relative group">
                 <span className="w-3 h-3 absolute -left-[31px] rounded-full bg-[#00e5bf] shadow-[0_0_10px_rgba(0,229,191,0.6)] mt-1.5 group-hover:scale-125 transition-transform duration-300"></span>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
@@ -266,7 +269,7 @@ export default function Home() {
           </div>
         </section>
 
-        
+
 
       </div>
     </main>
