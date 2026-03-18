@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import BackButton from "../components/BackButton";
 import ProjectCard from "../components/ProjectCard";
 
 const projects = [
@@ -109,13 +109,9 @@ export default function ProjectsPage() {
 
                 {/* ================= Header ================= */}
                 <div className="grid grid-cols-[1fr_auto_1fr] items-center mb-10">
-
-                    <Link
-                        href="/"
-                        className="text-gray-400 hover:text-[#00e5bf] transition justify-self-start"
-                    >
-                        ← Back
-                    </Link>
+                    <div className="justify-self-start">
+                        <BackButton />
+                    </div>
 
                     <h1 className="text-3xl font-bold tracking-tight text-center">Projects</h1>
 
