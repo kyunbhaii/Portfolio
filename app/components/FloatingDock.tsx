@@ -3,6 +3,21 @@
 import { ArrowUp, Award, Briefcase, Code2, FileCode2, GraduationCap, House, User } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState, useRef } from 'react';
+import type { LucideIcon } from 'lucide-react';
+
+type HomeDockLink = {
+  id: string;
+  label: string;
+  icon: LucideIcon;
+};
+
+type PageDockLink = HomeDockLink & {
+  action: () => void;
+};
+
+function hasAction(link: HomeDockLink | PageDockLink): link is PageDockLink {
+  return typeof (link as PageDockLink).action === 'function';
+}
 
 export default function FloatingDock() {
   const pathname = usePathname();
@@ -67,7 +82,7 @@ export default function FloatingDock() {
     }
   }, [isFocusedWithin, isHome, isHovered]);
 
-  const internalLinks = [
+  const internalLinks: HomeDockLink[] = [
     { id: 'about', label: 'About', icon: User },
     { id: 'experience', label: 'Experience', icon: Briefcase },
     { id: 'projects', label: 'Projects', icon: Code2 },
@@ -75,11 +90,11 @@ export default function FloatingDock() {
     { id: 'achievements', label: 'Achievements', icon: Award },
     { id: 'education', label: 'Education', icon: GraduationCap }
   ];
-  const pageLinks = [
+  const pageLinks: PageDockLink[] = [
     { id: 'home', label: 'Home', icon: House, action: () => router.push('/') },
     { id: 'top', label: 'Top', icon: ArrowUp, action: () => window.scrollTo({ top: 0, behavior: 'smooth' }) }
   ];
-  const dockLinks = isHome
+  const dockLinks: HomeDockLink[] | PageDockLink[] = isHome
     ? internalLinks
     : pathname === '/projects'
       ? pageLinks
@@ -160,7 +175,7 @@ export default function FloatingDock() {
                   if (isHome) {
                     const element = document.getElementById(link.id);
                     element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  } else {
+                  } else if (hasAction(link)) {
                     link.action();
                   }
                 }}
