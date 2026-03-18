@@ -7,10 +7,13 @@ import ProjectCard from "../components/ProjectCard";
 const projects = [
     {
         title: "ClaimLens",
-        description: "Built the core RAG and reasoning pipeline for an insurance policy analysis system.",
+        description: "Built a production-grade RAG pipeline for insurance policy analysis across multi-insurer documents.",
         details: [
-            "Hybrid retrieval (Dense + BM25 + Cross-Encoder) with structured reasoning.",
-            "Performance metrics: Recall@20: 0.93 | MRR: 0.89"
+            "Built a production-grade Retrieval-Augmented Generation (RAG) pipeline for insurance policy analysis across multi-insurer documents.",
+            "Implemented a deterministic clause splitter parsing legal PDFs into atomic clause chunks across 5 structural formats with canonical clause IDs and duplicate detection.",
+            "Designed a two-stage retrieval architecture using embeddings + FAISS (Top-40) with cross-encoder reranking (Top-5), achieving Recall@20: 0.93, MRR: 0.89 on single-clause queries.",
+            "Developed a multi-clause evaluation framework with stage-wise diagnostics, achieving Coverage@20: 0.87, Full Recall@20: 0.60, and MRR: 0.77 on composite multi-hop queries.",
+            "Developed an LLM reasoning engine with strict Pydantic schema validation, citation grounding, and JSON retry logic returning structured answers with confidence and clause citations."
         ],
         techStack: ["LangChain", "FAISS", "RAG", "LLM"],
         githubUrl: "https://github.com/kyunbhaii/ClaimLens-ET-Hackathon",
@@ -20,10 +23,11 @@ const projects = [
     },
     {
         title: "Insurance-Aware RAG",
-        description: "Modular RAG pipeline with deterministic clause parsing and hybrid retrieval.",
+        description: "Advanced RAG system for extracting and reasoning over complex insurance policy clauses.",
         details: [
-            "Configured deterministic clause parsing for accurate retrieval.",
-            "Implemented hybrid dense and sparse search architecture."
+            "Implemented deterministic clause splitting with stable canonical IDs (e.g., ICICILombard_p8_Grace_Period_1) to ensure perfect evaluation traceability and prevent vector overwrites.",
+            "Built a two-stage retrieval pipeline: high-recall dense FAISS retrieval using BGE embeddings followed by cross-encoder reranking for precision evidence surfacing.",
+            "Enforced strict Pydantic schema validation (RAGResponse, Citation) as a structural firewall, rejecting hallucinated citations and logically contradictory LLM outputs."
         ],
         techStack: ["FAISS", "BM25", "Cross-Encoder", "RAG"],
         githubUrl: "https://github.com/kyunbhaii/Insurance-Aware-RAG",
@@ -32,10 +36,11 @@ const projects = [
     },
     {
         title: "GPT From Scratch",
-        description: "Decoder-only Transformer built from scratch in PyTorch.",
+        description: "Built a decoder-only transformer language model from scratch in PyTorch.",
         details: [
-            "Implemented multi-head self-attention and positional encoding.",
-            "Trained on custom text dataset for next-token prediction."
+            "Built a decoder-only transformer language model from scratch, implementing multi-head self-attention, positional embeddings, feed-forward layers, and layer normalization across 6 transformer blocks with 384-dimensional embeddings.",
+            "Trained a character-level transformer on 200K tokens of structured Shakespearean dialogue (20K+ lines) with speaker annotations, modeling long-context dependencies (256-token window) and generating coherent multi-turn text using the AdamW optimizer, achieving training loss 1.5 and validation loss 1.8.",
+            "Optimized the training pipeline with gradient clipping, dropout (0.2), and efficient batching (64 sequences, 256-token context), reducing overfitting while improving validation stability."
         ],
         techStack: ["PyTorch", "Transformers", "NLP"],
         githubUrl: "https://github.com/kyunbhaii/GPT-from-Scratch",
@@ -44,10 +49,10 @@ const projects = [
     },
     {
         title: "Footfall Counting System",
-        description: "Real-time detection and tracking using YOLO and BoT-SORT.",
+        description: "Real-time system to detect, track, and count people in video streams.",
         details: [
-            "Integrated YOLO object detection with a high frame-rate.",
-            "Applied BoT-SORT algorithm for consistent multi-object tracking."
+            "Built using YOLOv8 for detection and BoT-SORT for long-term ID tracking with adaptive trip-wire logic, motion filtering, and cooldown logic enabling accurate directional counts (entries vs exits).",
+            "Achieved strong performance: mAP@0.5: 98.2%, Precision: 91.9%, Recall: 95.4%, and ID Stability: 96.3%."
         ],
         techStack: ["YOLO", "OpenCV", "Tracking"],
         githubUrl: "https://github.com/kyunbhaii/FootFall-Counting-YOLOv-BoT-SORT",
@@ -56,10 +61,10 @@ const projects = [
     },
     {
         title: "Hand Glove Detection",
-        description: "A custom YOLOv8-based model for detecting and classifying gloved vs bare hands in images.",
+        description: "Custom YOLOv8-based model for detecting and classifying gloved vs bare hands in safety-critical environments.",
         details: [
-            "Synthesized and preprocessed a custom classification dataset.",
-            "Trained and evaluated a lightweight YOLOv8 nano model."
+            "Synthesized and preprocessed a custom annotated classification dataset covering gloved and bare-hand instances across varied lighting and backgrounds.",
+            "Trained and evaluated a lightweight YOLOv8 nano model, optimizing for real-time inference speed without sacrificing detection accuracy."
         ],
         techStack: ["YOLOv8", "Computer Vision", "PyTorch"],
         githubUrl: "https://github.com/kyunbhaii/Hand-Glove-Detection",

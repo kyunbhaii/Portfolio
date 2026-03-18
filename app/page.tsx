@@ -93,10 +93,12 @@ export default function Home() {
 
               <ProjectCard
                 title="ClaimLens"
-                description="Built the core RAG and reasoning pipeline for an insurance policy analysis system."
+                description="Built a production-grade Retrieval-Augmented Generation (RAG) pipeline for insurance policy analysis across multi-insurer documents."
                 details={[
-                  "Hybrid retrieval (Dense + BM25 + Cross-Encoder) with structured reasoning.",
-                  "Performance metrics: Recall@20: 0.93 | MRR: 0.89"
+                  "Implemented a deterministic clause splitter parsing legal PDFs into atomic clause chunks across 5 structural formats with canonical clause IDs and duplicate detection.",
+                  "Designed a two-stage retrieval architecture using embeddings + FAISS (Top-40) with cross-encoder reranking (Top-5), achieving Recall@20: 0.93, MRR: 0.89 on single-clause queries.",
+                  "Developed a multi-clause evaluation framework with stage-wise diagnostics, achieving Coverage@20: 0.87, Full Recall@20: 0.60, and MRR: 0.77 on composite multi-hop queries.",
+                  "Developed an LLM reasoning engine with strict Pydantic schema validation, citation grounding, and JSON retry logic returning structured answers with confidence and clause citations."
                 ]}
                 techStack={["LangChain", "FAISS", "RAG", "LLM"]}
                 githubUrl="https://github.com/kyunbhaii/ClaimLens-ET-Hackathon"
@@ -107,12 +109,13 @@ export default function Home() {
 
               <ProjectCard
                 title="Insurance-Aware RAG"
-                description="Modular RAG pipeline with deterministic clause parsing and hybrid retrieval."
+                description="Advanced RAG system for extracting and reasoning over complex insurance policy clauses."
                 details={[
-                  "Configured deterministic clause parsing for accurate retrieval.",
-                  "Implemented hybrid dense and sparse search architecture."
+                  "Implemented deterministic clause splitting with stable canonical IDs for perfect evaluation traceability.",
+                  "Built two-stage retrieval: high-recall FAISS dense retrieval + cross-encoder reranking for precision evidence surfacing.",
+                  "Enforced strict Pydantic schemas (RAGResponse, Citation) rejecting hallucinated citations and contradictory LLM outputs."
                 ]}
-                techStack={["FAISS", "BM25", "Cross-Encoder", "RAG"]}
+                techStack={["FAISS", "BGE", "Cross-Encoder", "LangChain"]}
                 githubUrl="https://github.com/kyunbhaii/Insurance-Aware-RAG"
                 date="Jan 2026 – Feb 2026"
                 dateLayout="inline"

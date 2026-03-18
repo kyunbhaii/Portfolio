@@ -1,8 +1,31 @@
+'use client';
+
 import BackButton from '../../components/BackButton';
+import { useState, useEffect } from 'react';
 
 export default function ClaimLensPage() {
+    const [progress, setProgress] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            setProgress(Math.min(100, Math.round(pct)));
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
     return (
         <main className="min-h-screen bg-black text-white px-6 py-12">
+
+            {/* Reading Progress Bar */}
+            <div className="fixed top-0 left-0 w-full h-[2px] bg-gray-900 z-50">
+                <div
+                    className="h-full bg-[#00e5bf] shadow-[0_0_8px_rgba(0,229,191,0.6)] transition-all duration-150 ease-out"
+                    style={{ width: `${progress}%` }}
+                />
+            </div>
 
             {/* Outer container */}
             <div className="max-w-7xl mx-auto fade-up">
@@ -31,25 +54,104 @@ export default function ClaimLensPage() {
                         Case Study • RAG Systems • Retrieval Engineering
                     </p>
 
-                    <p className="text-gray-300 text-lg leading-relaxed mb-12">
+                    <p className="text-gray-300 text-lg leading-relaxed mb-8">
                         Built a production-grade RAG system for insurance policy analysis using deterministic clause parsing,
                         hybrid retrieval, and structured LLM reasoning to achieve reliable and grounded outputs.
                     </p>
 
-                    {/* ================= Overview ================= */}
+                    {/* Scroll Invite */}
+                    <div className="flex flex-col items-start gap-2 mb-12">
+                        <p className="text-[#00e5bf]/70 text-sm font-mono tracking-wide">Scroll to explore architecture, evaluation & insights ↓</p>
+                        <div className="flex gap-1">
+                            <span className="w-2 h-2 rounded-full bg-[#00e5bf]/40 animate-bounce" style={{ animationDelay: '0ms' }}></span>
+                            <span className="w-2 h-2 rounded-full bg-[#00e5bf]/60 animate-bounce" style={{ animationDelay: '150ms' }}></span>
+                            <span className="w-2 h-2 rounded-full bg-[#00e5bf]/80 animate-bounce" style={{ animationDelay: '300ms' }}></span>
+                        </div>
+                    </div>
+
+                    {/* ================= Introduction ================= */}
                     <section className="mb-16">
-                        <h2 className="text-xl font-semibold mb-3">Overview</h2>
+                        <h2 className="text-xl font-semibold mb-3 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>Introduction</h2>
+
+                        <p className="text-gray-400 leading-relaxed mb-4">
+                            ClaimLens is a production-oriented Retrieval-Augmented Generation (RAG) system designed for insurance policy analysis, where accuracy and traceability are critical.
+                        </p>
+                        <p className="text-gray-400 leading-relaxed mb-4">
+                            Traditional RAG pipelines often rely on heuristic chunking and loosely grounded outputs, which can lead to inconsistent retrieval and hallucinations. In domains like insurance, where decisions depend on precise clauses, this becomes a major limitation.
+                        </p>
+                        <p className="text-gray-400 leading-relaxed">
+                            This project focuses on treating retrieval and reasoning as structured, deterministic systems rather than black-box pipelines, ensuring that every output is grounded, traceable, and evaluable.
+                        </p>
+                    </section>
+
+                    {/* ================= Problem & Motivation ================= */}
+                    <section className="mb-16">
+                        <h2 className="text-xl font-semibold mb-4 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>Problem & Motivation</h2>
+
+                        <p className="text-gray-400 leading-relaxed mb-4">
+                            Most RAG tutorials suggest a simple pipeline: chunk documents, embed them, and retrieve with an LLM.
+                            This works well for clean text, but breaks down in real-world documents like insurance policies.
+                        </p>
+
+                        <p className="text-gray-400 leading-relaxed mb-4">
+                            Insurance PDFs are structurally complex, with inconsistent numbering, repeated headings,
+                            annexures, and noisy formatting. Naive token-based chunking ignores these structures,
+                            often splitting clauses incorrectly or missing important context entirely.
+                        </p>
+
+                        <p className="text-gray-400 leading-relaxed mb-4">
+                            The core problem wasn&apos;t retrieval — it was structure.
+                        </p>
+
+                        <p className="text-gray-400 leading-relaxed mb-4">
+                            To address this, I designed a deterministic clause parser that:
+                        </p>
+
+                        <ul className="text-gray-400 space-y-2 mb-4">
+                            <li>• Detects multiple clause formats (numbered, roman, alphabetic, definitions)</li>
+                            <li>• Assigns canonical IDs to each clause for traceability</li>
+                            <li>• Enforces fail-fast behavior to avoid silent parsing errors</li>
+                        </ul>
+
+                        <p className="text-gray-400 leading-relaxed mb-4">
+                            This ensures that each retrieval unit maps directly to a real legal clause, improving both
+                            retrieval accuracy and interpretability.
+                        </p>
 
                         <p className="text-gray-400 leading-relaxed">
-                            ClaimLens is designed as a structured retrieval system rather than a black-box RAG pipeline.
-                            It enforces deterministic parsing, strict validation, and evaluation-driven design to ensure
-                            reliable and grounded outputs in legal document reasoning.
+                            While not perfect due to challenges like multi-column layouts and inconsistent formatting,
+                            the system significantly outperforms naive chunking and provides a clear evaluation framework
+                            to iteratively improve performance.
+                        </p>
+                    </section>
+
+                    {/* ================= Overview ================= */}
+                    <section className="mb-16">
+                        <h2 className="text-xl font-semibold mb-3 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>Overview</h2>
+
+                        <p className="text-gray-400 leading-relaxed mb-4">
+                            ClaimLens is designed as a structured retrieval system rather than a naive RAG pipeline.
+                        </p>
+
+                        <p className="text-gray-400 mb-2">The system enforces:</p>
+                        <ul className="text-gray-400 space-y-1 leading-relaxed mb-4">
+                            <li>• Deterministic parsing for stable retrieval units</li>
+                            <li>• Canonical identifiers for traceability</li>
+                            <li>• Evaluation-driven design for measurable performance</li>
+                        </ul>
+
+                        <p className="text-gray-400 leading-relaxed">
+                            The goal is to move from &quot;LLM-generated answers&quot; to reliable, reproducible decision support.
                         </p>
                     </section>
 
                     {/* ================= System Architecture ================= */}
                     <section className="mb-16">
-                        <h2 className="text-xl font-semibold mb-3">System Architecture</h2>
+                        <h2 className="text-xl font-semibold mb-3 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>System Architecture</h2>
+
+                        <p className="text-gray-400 leading-relaxed mb-4">
+                            The architecture is designed to separate concerns across ingestion, retrieval, ranking, and reasoning, ensuring each component is independently optimizable and testable.
+                        </p>
 
                         <ul className="text-gray-400 space-y-2 leading-relaxed">
                             <li>• Ingestion → Page-level document loading</li>
@@ -61,9 +163,21 @@ export default function ClaimLensPage() {
                         </ul>
                     </section>
 
+                    {/* ================= Design Constraints ================= */}
+                    <section className="mb-16">
+                        <h2 className="text-xl font-semibold mb-3 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>Design Constraints</h2>
+
+                        <ul className="text-gray-400 space-y-2 leading-relaxed">
+                            <li>• High precision required for legal clause interpretation</li>
+                            <li>• Inconsistent document structures across insurers</li>
+                            <li>• Need for traceable and explainable outputs</li>
+                            <li>• Minimizing hallucinations in LLM reasoning</li>
+                        </ul>
+                    </section>
+
                     {/* ================= Architecture Flow ================= */}
                     <section className="mb-16">
-                        <h2 className="text-xl font-semibold mb-4">Architecture Flow</h2>
+                        <h2 className="text-xl font-semibold mb-4 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>Architecture Flow</h2>
 
                         <div className="border border-gray-800 p-6 rounded-xl overflow-x-auto">
                             <div className="flex items-center gap-3 text-sm text-gray-300 min-w-max">
@@ -97,28 +211,28 @@ export default function ClaimLensPage() {
 
                     {/* ================= Key Engineering Decisions ================= */}
                     <section className="mb-16">
-                        <h2 className="text-xl font-semibold mb-4">Key Engineering Decisions</h2>
+                        <h2 className="text-xl font-semibold mb-4 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>Key Engineering Decisions</h2>
 
-                        <div className="space-y-4">
+                        <div className="space-y-6">
 
                             <div>
                                 <h3 className="font-semibold">Deterministic Clause Parsing</h3>
                                 <p className="text-gray-400 text-sm mt-1">
-                                    Replaced naive chunking with structured clause extraction to ensure stable retrieval units.
+                                    Moved from token-based chunking to deterministic clause parsing to ensure retrieval operates on semantically meaningful and stable units, improving both recall and interpretability.
                                 </p>
                             </div>
 
                             <div>
                                 <h3 className="font-semibold">Canonical Clause IDs</h3>
                                 <p className="text-gray-400 text-sm mt-1">
-                                    Enabled traceability and reproducible evaluation across retrieval experiments.
+                                    Token-based chunks lacked identity across runs, making evaluation inconsistent. Introduced canonical clause identifiers so that retrieval experiments are reproducible and traceable across different queries and document versions.
                                 </p>
                             </div>
 
                             <div>
                                 <h3 className="font-semibold">Fail-Fast Design</h3>
                                 <p className="text-gray-400 text-sm mt-1">
-                                    Explicit error handling prevents silent failures and improves system reliability.
+                                    Silent failures in LLM pipelines produce unreliable outputs that are difficult to debug. Applied fail-fast validation with explicit error handling at each stage, ensuring that failures surface immediately and prevent cascading issues downstream.
                                 </p>
                             </div>
 
@@ -127,7 +241,7 @@ export default function ClaimLensPage() {
 
                     {/* ================= Retrieval ================= */}
                     <section className="mb-16">
-                        <h2 className="text-xl font-semibold mb-3">Retrieval Pipeline</h2>
+                        <h2 className="text-xl font-semibold mb-3 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>Retrieval Pipeline</h2>
 
                         <ul className="text-gray-400 space-y-2">
                             <li>• Dense Retrieval (FAISS + BGE embeddings)</li>
@@ -139,7 +253,7 @@ export default function ClaimLensPage() {
 
                     {/* ================= Reasoning ================= */}
                     <section className="mb-16">
-                        <h2 className="text-xl font-semibold mb-3">Reasoning & Validation</h2>
+                        <h2 className="text-xl font-semibold mb-3 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>Reasoning & Validation</h2>
 
                         <ul className="text-gray-400 space-y-2">
                             <li>• Strict JSON schema enforcement (Pydantic)</li>
@@ -150,7 +264,7 @@ export default function ClaimLensPage() {
 
                     {/* ================= Differentiation ================= */}
                     <section className="mb-16">
-                        <h2 className="text-xl font-semibold mb-4">What Makes This Different</h2>
+                        <h2 className="text-xl font-semibold mb-4 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>What Makes This Different</h2>
 
                         <div className="grid md:grid-cols-2 gap-4">
 
@@ -177,7 +291,17 @@ export default function ClaimLensPage() {
 
                     {/* ================= Evaluation ================= */}
                     <section className="mb-16">
-                        <h2 className="text-xl font-semibold mb-4">Evaluation</h2>
+                        <h2 className="text-xl font-semibold mb-4 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>Evaluation</h2>
+
+                        <p className="text-gray-400 leading-relaxed mb-4">
+                            Evaluation was treated as a first-class component rather than an afterthought.
+                        </p>
+                        <p className="text-gray-400 leading-relaxed mb-4">
+                            Metrics such as Recall@20 and MRR were used to measure retrieval effectiveness, ensuring that relevant clauses are consistently surfaced before reasoning.
+                        </p>
+                        <p className="text-gray-400 leading-relaxed mb-6">
+                            This enabled iterative improvements in retrieval quality instead of relying on subjective output inspection.
+                        </p>
 
                         <div className="border border-gray-800 p-6 rounded-xl flex gap-10">
                             <div>
@@ -192,9 +316,20 @@ export default function ClaimLensPage() {
                         </div>
                     </section>
 
+                    {/* ================= Trade-offs ================= */}
+                    <section className="mb-16">
+                        <h2 className="text-xl font-semibold mb-3 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>Trade-offs</h2>
+
+                        <div className="border-l-2 border-[#00e5bf]/40 bg-[#00e5bf]/[0.03] rounded-r-xl pl-5 py-4 pr-4 space-y-3">
+                            <p className="text-gray-400 text-sm">• Deterministic parsing increases complexity but improves consistency</p>
+                            <p className="text-gray-400 text-sm">• Cross-encoder reranking improves accuracy at the cost of latency</p>
+                            <p className="text-gray-400 text-sm">• Strict validation reduces flexibility but ensures reliability</p>
+                        </div>
+                    </section>
+
                     {/* ================= Challenges ================= */}
                     <section className="mb-16">
-                        <h2 className="text-xl font-semibold mb-3">Challenges</h2>
+                        <h2 className="text-xl font-semibold mb-3 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>Challenges</h2>
 
                         <ul className="text-gray-400 space-y-2">
                             <li>• Handling inconsistent clause structures across insurers</li>
@@ -203,27 +338,41 @@ export default function ClaimLensPage() {
                         </ul>
                     </section>
 
+                    {/* ================= Future Improvements ================= */}
+                    <section className="mb-16">
+                        <h2 className="text-xl font-semibold mb-3 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>Future Improvements</h2>
+
+                        <ul className="text-gray-400 space-y-2 leading-relaxed">
+                            <li>• Adaptive retrieval based on query intent</li>
+                            <li>• Learning-to-rank for dynamic reranking optimization</li>
+                            <li>• Feedback loop for continuous evaluation improvement</li>
+                            <li>• Integration with LangGraph for agentic workflows</li>
+                        </ul>
+                    </section>
+
+                    {/* ================= What I Learned ================= */}
+                    <section className="mb-16">
+                        <h2 className="text-xl font-semibold mb-3 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>What I Learned</h2>
+
+                        <div className="border-l-2 border-[#00e5bf]/40 bg-[#00e5bf]/[0.03] rounded-r-xl pl-5 py-4 pr-4 space-y-3">
+                            <p className="text-gray-400 text-sm">• Retrieval quality is the primary bottleneck in RAG systems</p>
+                            <p className="text-gray-400 text-sm">• Evaluation is essential for iterative improvement</p>
+                            <p className="text-gray-400 text-sm">• Structure and constraints improve LLM reliability more than prompt tuning</p>
+                        </div>
+                    </section>
+
                     {/* ================= Key Insight ================= */}
                     <section className="mb-16">
-                        <h2 className="text-xl font-semibold mb-3">Key Insight</h2>
+                        <h2 className="text-xl font-semibold mb-3 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>Key Insight</h2>
 
-                        <div className="border border-gray-800 p-5 rounded-xl">
-                            <p className="text-gray-400">
-                                Treating retrieval as a deterministic engineering system instead of a heuristic pipeline
-                                significantly improves reliability, evaluation consistency, and real-world usability.
+                        <div className="border-l-2 border-[#00e5bf] bg-[#00e5bf]/[0.05] rounded-r-xl pl-5 py-5 pr-4">
+                            <p className="text-gray-300 leading-relaxed">
+                                Reliable RAG systems are not achieved by better prompts, but by designing retrieval and reasoning as structured, deterministic pipelines with measurable performance.
                             </p>
                         </div>
                     </section>
 
-                    {/* ================= Why It Matters ================= */}
-                    <section>
-                        <h2 className="text-xl font-semibold mb-3">Why This Matters</h2>
 
-                        <p className="text-gray-400">
-                            ClaimLens demonstrates how structured retrieval and strict validation can transform RAG systems
-                            into reliable, production-ready solutions for complex domains like legal document understanding.
-                        </p>
-                    </section>
 
                 </div>
             </div>

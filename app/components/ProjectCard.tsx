@@ -42,11 +42,24 @@ export default function ProjectCard({
       </div>
 
       <div className="flex-grow flex flex-col">
-        <div className="mb-4">
-          <p className="text-gray-300 font-medium min-h-[3rem]">{description}</p>
-          
+        {/* Description always at top */}
+        <p className="text-gray-300 font-medium min-h-[3rem] mb-2">{description}</p>
+
+        {/* Button + bullets — vertically centered in remaining space */}
+        <div className="flex-grow flex flex-col justify-center pb-4">
+          {projectUrl && (
+            <Link
+              href={projectUrl}
+              className="relative self-start mt-2 mb-4 text-xs border border-gray-700 px-3 py-1.5 rounded hover:border-[#00e5bf] hover:text-[#00e5bf] transition overflow-hidden group"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <span className="absolute inset-0 bg-[#00e5bf]/10 w-0 group-hover:w-full transition-all duration-300 ease-out" />
+              <span className="relative z-10">View System Design</span>
+            </Link>
+          )}
+
           {details.length > 0 && (
-            <ul className="mt-4 space-y-2 text-sm text-gray-400">
+            <ul className="space-y-2 text-sm text-gray-400">
               {details.map((detail, idx) => (
                 <li key={idx} className="flex items-start">
                   <span className="mr-2 text-[#00e5bf]">{"•"}</span>
@@ -57,7 +70,7 @@ export default function ProjectCard({
           )}
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-4 mt-auto pt-6">
+        <div className="flex flex-wrap items-center justify-between gap-4 pt-6">
           <div className="flex flex-wrap gap-2 pr-4">
             {techStack.map((tech) => (
               <span
@@ -69,16 +82,18 @@ export default function ProjectCard({
             ))}
           </div>
 
-          <a
-            href={githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative text-xs border border-gray-700 px-3 py-1.5 rounded hover:border-[#00e5bf] hover:text-[#00e5bf] transition overflow-hidden group ml-auto shrink-0"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <span className="absolute inset-0 bg-[#00e5bf]/10 w-0 group-hover:w-full transition-all duration-300 ease-out" />
-            <span className="relative z-10">GitHub ↗</span>
-          </a>
+          <div className="flex items-center gap-2 ml-auto shrink-0">
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative text-xs border border-gray-700 px-3 py-1.5 rounded hover:border-[#00e5bf] hover:text-[#00e5bf] transition overflow-hidden group"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <span className="absolute inset-0 bg-[#00e5bf]/10 w-0 group-hover:w-full transition-all duration-300 ease-out" />
+              <span className="relative z-10">GitHub ↗</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>

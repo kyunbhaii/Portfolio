@@ -39,6 +39,9 @@ export default function StaticFooter() {
           <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-[#00e5bf] hover:scale-125 transform transition-all duration-200 ease-out inline-block">
             Resume
           </a>
+          <a href="mailto:vikrmadityamishra@gmail.com" className="hover:text-[#00e5bf] hover:scale-125 transform transition-all duration-200 ease-out inline-block">
+            Email
+          </a>
         </div>
 
       </div>
