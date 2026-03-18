@@ -7,6 +7,7 @@ interface ProjectCardProps {
   title: string;
   description: string;
   details?: string[];
+  impact?: string;
   techStack: string[];
   githubUrl: string;
   projectUrl?: string;
@@ -20,6 +21,7 @@ export default function ProjectCard({
   title,
   description,
   details = [],
+  impact,
   techStack,
   githubUrl,
   projectUrl,
@@ -56,6 +58,10 @@ export default function ProjectCard({
               <span className="absolute inset-0 bg-[#00e5bf]/10 w-0 group-hover:w-full transition-all duration-300 ease-out" />
               <span className="relative z-10">View System Design</span>
             </Link>
+          )}
+
+          {impact && (
+            <p className="text-xs text-[#00e5bf]/70 italic mb-3 leading-relaxed">{impact}</p>
           )}
 
           {details.length > 0 && (

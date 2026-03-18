@@ -8,6 +8,7 @@ const projects = [
     {
         title: "ClaimLens",
         description: "Built a production-grade RAG pipeline for insurance policy analysis across multi-insurer documents.",
+        impact: "Designed for real-world insurance policy analysis — where naive RAG fails and structure-aware retrieval wins.",
         details: [
             "Built a production-grade Retrieval-Augmented Generation (RAG) pipeline for insurance policy analysis across multi-insurer documents.",
             "Implemented a deterministic clause splitter parsing legal PDFs into atomic clause chunks across 5 structural formats with canonical clause IDs and duplicate detection.",
@@ -24,6 +25,7 @@ const projects = [
     {
         title: "Insurance-Aware RAG",
         description: "Advanced RAG system for extracting and reasoning over complex insurance policy clauses.",
+        impact: "Improved retrieval reliability in complex legal documents with deterministic, traceable clause parsing.",
         details: [
             "Implemented deterministic clause splitting with stable canonical IDs (e.g., ICICILombard_p8_Grace_Period_1) to ensure perfect evaluation traceability and prevent vector overwrites.",
             "Built a two-stage retrieval pipeline: high-recall dense FAISS retrieval using BGE embeddings followed by cross-encoder reranking for precision evidence surfacing.",
@@ -37,6 +39,7 @@ const projects = [
     {
         title: "GPT From Scratch",
         description: "Built a decoder-only transformer language model from scratch in PyTorch.",
+        impact: "Demonstrates deep understanding of transformer internals — attention, training dynamics, and optimization.",
         details: [
             "Built a decoder-only transformer language model from scratch, implementing multi-head self-attention, positional embeddings, feed-forward layers, and layer normalization across 6 transformer blocks with 384-dimensional embeddings.",
             "Trained a character-level transformer on 200K tokens of structured Shakespearean dialogue (20K+ lines) with speaker annotations, modeling long-context dependencies (256-token window) and generating coherent multi-turn text using the AdamW optimizer, achieving training loss 1.5 and validation loss 1.8.",
@@ -50,6 +53,7 @@ const projects = [
     {
         title: "Footfall Counting System",
         description: "Real-time system to detect, track, and count people in video streams.",
+        impact: "Production-ready people counting with 98.2% mAP — reliable enough for retail and security deployments.",
         details: [
             "Built using YOLOv8 for detection and BoT-SORT for long-term ID tracking with adaptive trip-wire logic, motion filtering, and cooldown logic enabling accurate directional counts (entries vs exits).",
             "Achieved strong performance: mAP@0.5: 98.2%, Precision: 91.9%, Recall: 95.4%, and ID Stability: 96.3%."
@@ -62,6 +66,7 @@ const projects = [
     {
         title: "Hand Glove Detection",
         description: "Custom YOLOv8-based model for detecting and classifying gloved vs bare hands in safety-critical environments.",
+        impact: "Lightweight real-time safety classifier deployable in industrial and lab settings.",
         details: [
             "Synthesized and preprocessed a custom annotated classification dataset covering gloved and bare-hand instances across varied lighting and backgrounds.",
             "Trained and evaluated a lightweight YOLOv8 nano model, optimizing for real-time inference speed without sacrificing detection accuracy."
@@ -74,6 +79,7 @@ const projects = [
     {
         title: "Real-Time Sign Language Recognition",
         description: "Tracks hand movements & interprets signs from video using a combined CNN + LSTM architecture for spatial and temporal action recognition.",
+        impact: "End-to-end gesture recognition pipeline bridging computer vision and sequential modeling.",
         details: [
             "Captured spatial features natively via CNN layers.",
             "Processed temporal sequential actions utilizing LSTM networks."
@@ -146,6 +152,7 @@ export default function ProjectsPage() {
                                             title={project.title}
                                             description={project.description}
                                             details={project.details}
+                                            impact={project.impact}
                                             techStack={project.techStack}
                                             githubUrl={project.githubUrl}
                                             projectUrl={project.projectUrl}
@@ -166,6 +173,7 @@ export default function ProjectsPage() {
                                             title={project.title}
                                             description={project.description}
                                             details={project.details}
+                                            impact={project.impact}
                                             techStack={project.techStack}
                                             githubUrl={project.githubUrl}
                                             projectUrl={project.projectUrl}
