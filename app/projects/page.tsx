@@ -95,6 +95,7 @@ const categories = ["All", "AI/RAG", "Architecture", "Vision"];
 
 export default function ProjectsPage() {
     const [activeFilter, setActiveFilter] = useState("All");
+    const [hoveredCategoryIndex, setHoveredCategoryIndex] = useState<number | null>(null);
 
     const filteredProjects = projects.filter(project => 
         activeFilter === "All" || project.category === activeFilter
@@ -107,18 +108,18 @@ export default function ProjectsPage() {
             <div className="max-w-7xl mx-auto fade-up">
 
                 {/* ================= Header ================= */}
-                <div className="flex justify-between items-center mb-10">
+                <div className="grid grid-cols-[1fr_auto_1fr] items-center mb-10">
 
                     <Link
                         href="/"
-                        className="text-gray-400 hover:text-[#00e5bf] transition"
+                        className="text-gray-400 hover:text-[#00e5bf] transition justify-self-start"
                     >
                         ← Back
                     </Link>
 
-                    <h1 className="text-3xl font-bold tracking-tight">Projects</h1>
+                    <h1 className="text-3xl font-bold tracking-tight text-center">Projects</h1>
 
-                    <div></div>
+                    <div aria-hidden="true" className="justify-self-end w-[4.5rem]"></div>
                 </div>
 
                 <section className="surface-panel rounded-3xl p-6 sm:p-8 mb-12 relative overflow-hidden">
@@ -126,10 +127,10 @@ export default function ProjectsPage() {
                     <div className="relative z-10 max-w-3xl">
                         <p className="section-kicker mb-4">Project Archive</p>
                         <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-100 mb-4">
-                            Systems, experiments, and applied AI work with real implementation depth.
+                            Generative AI systems, model experiments, and applied AI projects built with real implementation depth.
                         </h2>
                         <p className="text-gray-400 leading-relaxed text-sm sm:text-base max-w-2xl">
-                            This page collects the projects that best represent how I think about retrieval, reasoning, model architecture, and production-oriented machine learning. Use the filters to move between RAG systems, model-building work, and computer vision projects.
+                            This page brings together the projects that best reflect how I build with GenAI, explore LLM workflows, work on open-source AI ideas, and experiment across model architecture, retrieval, and computer vision.
                         </p>
                     </div>
                 </section>
@@ -143,19 +144,33 @@ export default function ProjectsPage() {
                         </div>
 
                         <div className="flex flex-wrap gap-3">
-                            {categories.map((category) => (
-                                <button
-                                    key={category}
-                                    onClick={() => setActiveFilter(category)}
-                                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                                        activeFilter === category 
-                                        ? "bg-[#00e5bf] text-black shadow-[0_0_18px_rgba(0,229,191,0.24)]" 
-                                        : "bg-gray-950/80 border border-gray-800 text-gray-400 hover:text-[#00e5bf] hover:border-[#00e5bf]/60"
-                                    }`}
-                                >
-                                    {category}
-                                </button>
-                            ))}
+                            {categories.map((category, idx) => {
+                                const distanceFromHovered =
+                                    hoveredCategoryIndex === null ? null : Math.abs(hoveredCategoryIndex - idx);
+                                const scaleClass =
+                                    distanceFromHovered === 0
+                                        ? "scale-[1.06]"
+                                        : distanceFromHovered === 1
+                                            ? "scale-[1.03]"
+                                            : "scale-100";
+                                const isActive = activeFilter === category;
+
+                                return (
+                                    <button
+                                        key={category}
+                                        onClick={() => setActiveFilter(category)}
+                                        onMouseEnter={() => setHoveredCategoryIndex(idx)}
+                                        onMouseLeave={() => setHoveredCategoryIndex(null)}
+                                        className={`px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-250 ease-out border ${
+                                            isActive
+                                                ? "bg-gray-950/95 border-[#00e5bf]/55 text-gray-100 shadow-[0_0_12px_rgba(0,229,191,0.12)]"
+                                                : "bg-gray-950/80 border-gray-800 text-gray-400 hover:text-[#00e5bf] hover:border-[#00e5bf]/45"
+                                        } ${scaleClass} focus-visible:outline-none focus-visible:border-[#00e5bf]/60 focus-visible:ring-2 focus-visible:ring-[#00e5bf]/20`}
+                                    >
+                                        {category}
+                                    </button>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>

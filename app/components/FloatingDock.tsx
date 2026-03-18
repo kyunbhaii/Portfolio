@@ -15,12 +15,10 @@ export default function FloatingDock() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
   const hideDelay = 2200;
+  const shouldShowDock = !isHome || isVisible || isHovered || isFocusedWithin;
 
   useEffect(() => {
-    if (!isHome) {
-      setIsVisible(true);
-      return;
-    }
+    if (!isHome) return;
 
     const sections = ['about', 'experience', 'projects', 'skills', 'achievements', 'education'];
 
@@ -79,15 +77,22 @@ export default function FloatingDock() {
   ];
   const pageLinks = [
     { id: 'home', label: 'Home', icon: House, action: () => router.push('/') },
-    { id: 'projects', label: 'Projects', icon: Code2, action: () => router.push('/projects') },
     { id: 'top', label: 'Top', icon: ArrowUp, action: () => window.scrollTo({ top: 0, behavior: 'smooth' }) }
   ];
-  const dockLinks = isHome ? internalLinks : pageLinks;
+  const dockLinks = isHome
+    ? internalLinks
+    : pathname === '/projects'
+      ? pageLinks
+      : [
+          pageLinks[0],
+          { id: 'projects', label: 'Projects', icon: Code2, action: () => router.push('/projects') },
+          pageLinks[1]
+        ];
 
   return (
     <div 
       className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-out
-      ${isVisible || isHovered || isFocusedWithin ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0 pointer-events-none'}
+      ${shouldShowDock ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0 pointer-events-none'}
       `}
       onMouseEnter={() => {
         setIsHovered(true);
@@ -95,6 +100,11 @@ export default function FloatingDock() {
       }}
       onMouseLeave={() => {
         setIsHovered(false);
+        if (!isHome) {
+          setIsVisible(true);
+          return;
+        }
+
         if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
         scrollTimeout.current = setTimeout(() => {
           if (!isFocusedWithin) {
@@ -109,6 +119,11 @@ export default function FloatingDock() {
       onBlurCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
           setIsFocusedWithin(false);
+          if (!isHome) {
+            setIsVisible(true);
+            return;
+          }
+
           if (!isHovered) {
             if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
             scrollTimeout.current = setTimeout(() => {
