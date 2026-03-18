@@ -92,14 +92,14 @@ export default function ProjectsPage() {
     return (
         <main className="min-h-screen bg-black text-white px-6 py-12">
 
-            <div className="max-w-5xl mx-auto fade-up">
+            <div className="max-w-7xl mx-auto fade-up">
 
                 {/* ================= Header ================= */}
                 <div className="flex justify-between items-center mb-10">
 
                     <Link
                         href="/"
-                        className="text-gray-400 hover:text-green-400 transition"
+                        className="text-gray-400 hover:text-[#00e5bf] transition"
                     >
                         ← Back
                     </Link>
@@ -117,8 +117,8 @@ export default function ProjectsPage() {
                             onClick={() => setActiveFilter(category)}
                             className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
                                 activeFilter === category 
-                                ? "bg-green-400 text-black shadow-[0_0_12px_rgba(74,222,128,0.3)]" 
-                                : "bg-gray-900 border border-gray-800 text-gray-400 hover:text-green-400 hover:border-green-400"
+                                ? "bg-[#00e5bf] text-black shadow-[0_0_12px_rgba(0,229,191,0.3)]" 
+                                : "bg-gray-900 border border-gray-800 text-gray-400 hover:text-[#00e5bf] hover:border-[#00e5bf]"
                             }`}
                         >
                             {category}

@@ -30,12 +30,12 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   const content = (
     <div className={`flex flex-col h-full pr-4 ${projectUrl ? "cursor-pointer transition-all duration-200 hover:scale-[1.01]" : ""}`}>
-      {featuredText && <p className="text-xs text-green-400 mb-2">{featuredText}</p>}
+      {featuredText && <p className="text-xs text-[#00e5bf] mb-2 font-mono">{featuredText}</p>}
       
       <div className={dateLayout === 'inline' ? "flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 gap-x-4" : "mb-2"}>
-        <h3 className={`font-semibold break-words leading-tight ${dateLayout === 'inline' ? 'text-2xl' : 'text-xl'}`}>{title}</h3>
+        <h3 className={`font-semibold break-words leading-tight text-[#00e5bf] ${dateLayout === 'inline' ? 'text-2xl' : 'text-xl'}`}>{title}</h3>
         {date && (
-          <p className={dateLayout === 'inline' ? "text-green-400 text-sm mt-2 sm:mt-0 whitespace-nowrap" : "text-green-400/80 text-xs mt-0.5"}>
+          <p className={dateLayout === 'inline' ? "text-[#00e5bf] font-mono text-sm mt-2 sm:mt-0 whitespace-nowrap" : "text-[#00e5bf] font-mono text-xs mt-0.5"}>
             {date}
           </p>
         )}
@@ -49,7 +49,7 @@ export default function ProjectCard({
             <ul className="mt-4 space-y-2 text-sm text-gray-400">
               {details.map((detail, idx) => (
                 <li key={idx} className="flex items-start">
-                  <span className="mr-2 text-green-500/50">•</span>
+                  <span className="mr-2 text-[#00e5bf]">{"•"}</span>
                   <span>{detail}</span>
                 </li>
               ))}
@@ -73,10 +73,10 @@ export default function ProjectCard({
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative text-xs border border-gray-700 px-3 py-1.5 rounded hover:border-green-400 hover:text-green-400 transition overflow-hidden group ml-auto shrink-0"
+            className="relative text-xs border border-gray-700 px-3 py-1.5 rounded hover:border-[#00e5bf] hover:text-[#00e5bf] transition overflow-hidden group ml-auto shrink-0"
             onClick={(e) => e.stopPropagation()}
           >
-            <span className="absolute inset-0 bg-green-400/10 w-0 group-hover:w-full transition-all duration-300 ease-out" />
+            <span className="absolute inset-0 bg-[#00e5bf]/10 w-0 group-hover:w-full transition-all duration-300 ease-out" />
             <span className="relative z-10">GitHub ↗</span>
           </a>
         </div>

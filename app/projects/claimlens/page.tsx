@@ -5,7 +5,7 @@ export default function ClaimLensPage() {
         <main className="min-h-screen bg-black text-white px-6 py-12">
 
             {/* Outer container */}
-            <div className="max-w-5xl mx-auto fade-up">
+            <div className="max-w-7xl mx-auto fade-up">
 
                 {/* 📄 Page Box */}
                 <div className="bg-neutral-950 border border-gray-800 rounded-2xl p-8 md:p-12 shadow-[0_0_40px_rgba(0,255,150,0.03)]">
@@ -17,9 +17,9 @@ export default function ClaimLensPage() {
                         <a
                             href="https://github.com/kyunbhaii/ClaimLens-ET-Hackathon"
                             target="_blank"
-                            className="relative overflow-hidden group text-sm border border-gray-700 px-3 py-1 rounded hover:border-green-400 hover:text-green-400 transition"
+                            className="relative overflow-hidden group text-sm border border-gray-700 px-3 py-1 rounded hover:border-[#00e5bf] hover:text-[#00e5bf] transition"
                         >
-                            <span className="absolute inset-0 bg-green-400/10 w-0 group-hover:w-full transition-all duration-300 ease-out" />
+                            <span className="absolute inset-0 bg-[#00e5bf]/10 w-0 group-hover:w-full transition-all duration-300 ease-out" />
                             <span className="relative z-10">GitHub ↗</span>
                         </a>
                     </div>
@@ -80,7 +80,7 @@ export default function ClaimLensPage() {
 
                                         <div
                                             className={`px-4 py-2 rounded-lg border ${step === "Structured Output"
-                                                ? "border-green-500 text-green-400"
+                                                ? "border-[#00e5bf] text-[#00e5bf]"
                                                 : "border-gray-700"
                                                 }`}
                                         >
@@ -164,7 +164,7 @@ export default function ClaimLensPage() {
                             </div>
 
                             <div className="border border-gray-800 p-4 rounded-xl">
-                                <h3 className="text-green-400 font-semibold">ClaimLens</h3>
+                                <h3 className="text-[#00e5bf] font-semibold">ClaimLens</h3>
                                 <ul className="text-gray-400 text-sm mt-2 space-y-1">
                                     <li>• Deterministic clause parsing</li>
                                     <li>• Canonical IDs</li>
@@ -182,12 +182,12 @@ export default function ClaimLensPage() {
                         <div className="border border-gray-800 p-6 rounded-xl flex gap-10">
                             <div>
                                 <p className="text-sm text-gray-400">Recall@20</p>
-                                <p className="text-3xl font-bold text-green-400">0.93</p>
+                                <p className="text-3xl font-bold text-[#00e5bf]">0.93</p>
                             </div>
 
                             <div>
                                 <p className="text-sm text-gray-400">MRR</p>
-                                <p className="text-3xl font-bold text-blue-400">0.89</p>
+                                <p className="text-3xl font-bold text-[#00e5bf]">0.89</p>
                             </div>
                         </div>
                     </section>
