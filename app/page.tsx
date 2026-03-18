@@ -16,7 +16,6 @@ export default function Home() {
         {/* ================= Intro ================= */}
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-8 mb-16 mt-4">
           <div className="max-w-3xl">
-            <p className="section-kicker mb-4">Portfolio 2026</p>
             <h1 className="text-4xl sm:text-6xl font-semibold mb-4 tracking-tight leading-none">
               Vikramaditya Mishra
             </h1>
@@ -24,7 +23,7 @@ export default function Home() {
               <Typewriter text="AI Engineer | Generative AI | LLM" speed={60} delay={400} />
             </p>
             <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-2xl">
-              Building retrieval systems, evaluation pipelines, and structured LLM workflows for domains where accuracy, traceability, and reliability actually matter.
+              Building GenAI systems, open-source AI projects, and exploring LLM workflows with a focus on experimentation, reliability, and real-world impact.
             </p>
           </div>
 
@@ -34,17 +33,19 @@ export default function Home() {
               href="https://github.com/kyunbhaii"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-mono text-gray-400 hover:text-[#00e5bf] hover:scale-110 transform transition-all duration-200 ease-out"
+              className="text-sm font-mono text-gray-400 hover:text-[#00e5bf] hover:scale-110 transform transition-all duration-200 ease-out relative group inline-block"
             >
               GitHub
+              <span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
             </a>
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-mono text-gray-400 hover:text-[#00e5bf] hover:scale-110 transform transition-all duration-200 ease-out"
+              className="text-sm font-mono text-gray-400 hover:text-[#00e5bf] hover:scale-110 transform transition-all duration-200 ease-out relative group inline-block"
             >
               Resume
+              <span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
             </a>
           </div>
         </div>

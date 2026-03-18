@@ -101,7 +101,8 @@ export default function ProjectsPage() {
     );
 
     return (
-        <main className="min-h-screen bg-black text-white px-6 py-12">
+        <main className="min-h-screen bg-black text-white px-6 py-12 relative overflow-hidden soft-grid">
+            <div className="absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(circle_at_top,_rgba(0,229,191,0.08),_transparent_58%)] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto fade-up">
 
@@ -120,21 +121,43 @@ export default function ProjectsPage() {
                     <div></div>
                 </div>
 
+                <section className="surface-panel rounded-3xl p-6 sm:p-8 mb-12 relative overflow-hidden">
+                    <div className="absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_center,_rgba(0,229,191,0.08),_transparent_58%)] pointer-events-none" />
+                    <div className="relative z-10 max-w-3xl">
+                        <p className="section-kicker mb-4">Project Archive</p>
+                        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-100 mb-4">
+                            Systems, experiments, and applied AI work with real implementation depth.
+                        </h2>
+                        <p className="text-gray-400 leading-relaxed text-sm sm:text-base max-w-2xl">
+                            This page collects the projects that best represent how I think about retrieval, reasoning, model architecture, and production-oriented machine learning. Use the filters to move between RAG systems, model-building work, and computer vision projects.
+                        </p>
+                    </div>
+                </section>
+
                 {/* ================= Filter Tags ================= */}
-                <div className="flex flex-wrap gap-3 justify-center mb-12">
-                    {categories.map((category) => (
-                        <button
-                            key={category}
-                            onClick={() => setActiveFilter(category)}
-                            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                                activeFilter === category 
-                                ? "bg-[#00e5bf] text-black shadow-[0_0_12px_rgba(0,229,191,0.3)]" 
-                                : "bg-gray-900 border border-gray-800 text-gray-400 hover:text-[#00e5bf] hover:border-[#00e5bf]"
-                            }`}
-                        >
-                            {category}
-                        </button>
-                    ))}
+                <div className="surface-panel rounded-2xl p-4 sm:p-5 mb-12">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                        <div>
+                            <p className="text-sm font-medium text-gray-200">Browse by category</p>
+                            <p className="text-xs text-gray-500 mt-1">Switch between themes without losing the portfolio narrative.</p>
+                        </div>
+
+                        <div className="flex flex-wrap gap-3">
+                            {categories.map((category) => (
+                                <button
+                                    key={category}
+                                    onClick={() => setActiveFilter(category)}
+                                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                                        activeFilter === category 
+                                        ? "bg-[#00e5bf] text-black shadow-[0_0_18px_rgba(0,229,191,0.24)]" 
+                                        : "bg-gray-950/80 border border-gray-800 text-gray-400 hover:text-[#00e5bf] hover:border-[#00e5bf]/60"
+                                    }`}
+                                >
+                                    {category}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
                 {/* ================= Projects Grid ================= */}
@@ -142,9 +165,17 @@ export default function ProjectsPage() {
                     {activeFilter === "All" ? (
                         <>
                             {/* Featured Projects Section */}
-                            <h2 className="text-2xl font-bold mb-6 mt-8 tracking-tight fade-up" style={{ animationDelay: '0ms' }}>
-                                Featured Projects
-                            </h2>
+                            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6 mt-8 fade-up" style={{ animationDelay: '0ms' }}>
+                                <div>
+                                    <p className="section-kicker mb-2">Highlighted Work</p>
+                                    <h2 className="text-2xl font-bold tracking-tight text-gray-100">
+                                        Featured Projects
+                                    </h2>
+                                </div>
+                                <p className="text-sm text-gray-500 max-w-xl">
+                                    The most representative work for structured retrieval, system design, and end-to-end AI engineering.
+                                </p>
+                            </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                                 {filteredProjects.slice(0, 2).map((project, idx) => (
                                     <div key={project.title} style={{ animationDelay: `${(idx + 1) * 100}ms` }} className="animate-[fadeUp_0.4s_ease-out_both] h-full flex">
@@ -156,6 +187,7 @@ export default function ProjectsPage() {
                                             techStack={project.techStack}
                                             githubUrl={project.githubUrl}
                                             projectUrl={project.projectUrl}
+                                            featuredText="Featured"
                                             date={project.date}
                                         />
                                     </div>
@@ -163,9 +195,17 @@ export default function ProjectsPage() {
                             </div>
 
                             {/* Other Projects Section */}
-                            <h2 className="text-2xl font-bold mb-6 mt-16 tracking-tight fade-up" style={{ animationDelay: '300ms' }}>
-                                Other Projects
-                            </h2>
+                            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6 mt-16 fade-up" style={{ animationDelay: '300ms' }}>
+                                <div>
+                                    <p className="section-kicker mb-2">Broader Exploration</p>
+                                    <h2 className="text-2xl font-bold tracking-tight text-gray-100">
+                                        Other Projects
+                                    </h2>
+                                </div>
+                                <p className="text-sm text-gray-500 max-w-xl">
+                                    Additional projects across model architecture, computer vision, and applied ML experimentation.
+                                </p>
+                            </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                                 {filteredProjects.slice(2).map((project, idx) => (
                                     <div key={project.title} style={{ animationDelay: `${(idx + 4) * 100}ms` }} className="animate-[fadeUp_0.4s_ease-out_both] h-full flex">
@@ -185,21 +225,35 @@ export default function ProjectsPage() {
                         </>
                     ) : (
                         /* Filtered Projects rendering */
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch mt-8">
-                            {filteredProjects.map((project, idx) => (
-                                <div key={project.title} style={{ animationDelay: `${idx * 100}ms` }} className="animate-[fadeUp_0.4s_ease-out_both] h-full flex">
-                                    <ProjectCard
-                                        title={project.title}
-                                        description={project.description}
-                                        details={project.details}
-                                        techStack={project.techStack}
-                                        githubUrl={project.githubUrl}
-                                        projectUrl={project.projectUrl}
-                                        date={project.date}
-                                    />
+                        <>
+                            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6 mt-8">
+                                <div>
+                                    <p className="section-kicker mb-2">Filtered View</p>
+                                    <h2 className="text-2xl font-bold tracking-tight text-gray-100">
+                                        {activeFilter} Projects
+                                    </h2>
                                 </div>
-                            ))}
-                        </div>
+                                <p className="text-sm text-gray-500 max-w-xl">
+                                    A focused view of projects in the selected category.
+                                </p>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch mt-8">
+                                {filteredProjects.map((project, idx) => (
+                                    <div key={project.title} style={{ animationDelay: `${idx * 100}ms` }} className="animate-[fadeUp_0.4s_ease-out_both] h-full flex">
+                                        <ProjectCard
+                                            title={project.title}
+                                            description={project.description}
+                                            details={project.details}
+                                            impact={project.impact}
+                                            techStack={project.techStack}
+                                            githubUrl={project.githubUrl}
+                                            projectUrl={project.projectUrl}
+                                            date={project.date}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </>
                     )}
                 </div>
             </div>
