@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { User, Briefcase, Code2, Award, FileText, Github, FileCode2, GraduationCap, Mail } from 'lucide-react';
+import { User, Briefcase, Code2, Award, FileCode2, GraduationCap } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState, useRef } from 'react';
 
@@ -119,49 +119,6 @@ export default function FloatingDock() {
               </a>
             );
           })}
-        </div>
-
-        {/* Divider */}
-        <div className="w-px h-6 bg-gray-800 mx-1"></div>
-
-        {/* External Action Links */}
-        <div className="flex items-center gap-1">
-           <a
-              href="https://github.com/kyunbhaii"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative group flex items-center justify-center w-10 h-10 rounded-full border border-gray-700 bg-[#0a0a0a] text-gray-300 transition-all duration-300 hover:border-[#00e5bf] hover:text-[#00e5bf] hover:shadow-[0_0_12px_rgba(0,229,191,0.2)]"
-              aria-label="GitHub"
-            >
-              <Github size={18} className="relative z-10 transition-transform duration-300 group-hover:scale-110" />
-               {/* Tooltip */}
-               <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 border border-gray-800 text-xs text-[#00e5bf] rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
-                  GitHub
-                </span>
-            </a>
-
-           <a
-              href="mailto:vikrmadityamishra@gmail.com"
-              className="relative group flex items-center justify-center w-10 h-10 rounded-full border border-gray-700 bg-[#0a0a0a] text-gray-300 transition-all duration-300 hover:border-[#00e5bf] hover:text-[#00e5bf] hover:shadow-[0_0_12px_rgba(0,229,191,0.2)]"
-              aria-label="Email"
-            >
-              <Mail size={18} className="relative z-10 transition-transform duration-300 group-hover:scale-110" />
-              {/* Tooltip */}
-              <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 border border-gray-800 text-xs text-[#00e5bf] rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
-                Email
-              </span>
-            </a>
-
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative group flex items-center justify-center gap-1.5 px-3 h-10 rounded-full border border-gray-700 bg-[#0a0a0a] text-gray-300 transition-all duration-300 hover:border-[#00e5bf] hover:text-[#00e5bf] hover:shadow-[0_0_12px_rgba(0,229,191,0.2)]"
-              aria-label="Resume"
-            >
-              <FileText size={16} className="relative z-10 transition-transform duration-300 group-hover:scale-110" />
-              <span className="text-xs font-medium relative z-10">Resume</span>
-            </a>
         </div>
 
       </div>

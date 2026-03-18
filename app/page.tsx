@@ -13,7 +13,7 @@ export default function Home() {
       <div className="max-w-7xl mx-auto fade-up relative z-10">
 
         {/* ================= Intro ================= */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 mt-4">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 mb-12 mt-4">
           <div>
             <h1 className="text-4xl sm:text-5xl font-bold mb-4 tracking-tight">
               Vikramaditya Mishra
@@ -21,6 +21,26 @@ export default function Home() {
             <p className="text-lg sm:text-xl text-[#00e5bf]/90 font-medium font-mono min-h-[1.75rem]">
               <Typewriter text="AI Engineer | Generative AI | LLM" speed={60} delay={400} />
             </p>
+          </div>
+
+          {/* GitHub + Resume — top right, aligned with name, plain text style */}
+          <div className="flex items-center gap-6 shrink-0 mt-1">
+            <a
+              href="https://github.com/kyunbhaii"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-mono text-gray-400 hover:text-[#00e5bf] hover:scale-110 transform transition-all duration-200 ease-out"
+            >
+              GitHub
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-mono text-gray-400 hover:text-[#00e5bf] hover:scale-110 transform transition-all duration-200 ease-out"
+            >
+              Resume
+            </a>
           </div>
         </div>
 
@@ -33,13 +53,13 @@ export default function Home() {
 
           <div className="text-gray-400 space-y-4 leading-relaxed">
             <p>
-              I am a passionate <span className="text-gray-200 font-medium">AI/ML Engineer</span> and student with a focus on building scalable, high-impact <span className="text-gray-200 font-medium">Generative AI solutions</span>.
+              <span className="text-gray-200 font-medium">AI/ML Engineer</span> focused on building production-grade <span className="text-gray-200 font-medium">Retrieval-Augmented Generation systems</span> and intelligent workflows for real-world, high-stakes domains.
             </p>
             <p>
-              My technical expertise revolves around architecting intelligent workflows using <span className="text-gray-200 font-medium">AI Agents, LangChain, LangGraph, NLP,</span> and <span className="text-gray-200 font-medium">Vector Databases</span>. I specialize in turning complex data into production-ready <span className="text-gray-200 font-medium">RAG Systems</span> and robust <span className="text-gray-200 font-medium">Machine Learning Applications</span>.
+              I work across the full stack of modern AI — <span className="text-gray-200 font-medium">LangChain, LangGraph, FAISS, Pydantic,</span> and <span className="text-gray-200 font-medium">Vector Databases</span> — with a focus on structured retrieval, evaluation frameworks, and reliable LLM reasoning pipelines.
             </p>
             <p>
-              When I'm not coding, you can find me exploring the latest <span className="text-gray-200 font-medium">AI research papers</span>, experimenting with new <span className="text-gray-200 font-medium">open-source models</span>, or sharing my thoughts and discussing new technologies on <a href="https://x.com/kyunbhaii" target="_blank" rel="noopener noreferrer" className="text-gray-200 font-medium relative group inline-block transition-colors hover:text-[#00e5bf]">X<span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span></a> and <a href="https://www.linkedin.com/in/vikramaditya-mishra-8a9a4b210/" target="_blank" rel="noopener noreferrer" className="text-gray-200 font-medium relative group inline-block transition-colors hover:text-[#00e5bf]">LinkedIn<span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span></a>.
+              I care about systems that work under constraints, not just demos that work on clean data. You can find me on <a href="https://x.com/kyunbhaii" target="_blank" rel="noopener noreferrer" className="text-gray-200 font-medium relative group inline-block transition-colors hover:text-[#00e5bf]">X<span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span></a> and <a href="https://www.linkedin.com/in/scmvikram/" target="_blank" rel="noopener noreferrer" className="text-gray-200 font-medium relative group inline-block transition-colors hover:text-[#00e5bf]">LinkedIn<span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span></a>.
             </p>
           </div>
         </section>

@@ -54,9 +54,11 @@ export default function ClaimLensPage() {
                         Case Study • RAG Systems • Retrieval Engineering
                     </p>
 
-                    <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                        Built a production-grade RAG system for insurance policy analysis using deterministic clause parsing,
-                        hybrid retrieval, and structured LLM reasoning to achieve reliable and grounded outputs.
+                    <p className="text-gray-300 text-lg leading-relaxed mb-2">
+                        Most RAG systems fail on real-world documents.
+                    </p>
+                    <p className="text-gray-400 text-base leading-relaxed mb-8">
+                        ClaimLens solves this by replacing naive chunking with deterministic clause-level retrieval — built for insurance policies where precision isn&apos;t optional.
                     </p>
 
                     {/* Scroll Invite */}
