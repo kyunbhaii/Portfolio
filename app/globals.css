@@ -5,7 +5,6 @@
   --foreground: #171717;
 }
 
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -31,5 +30,30 @@ body {
 }
 
 .fade-up {
-  animation: fadeUp 0.6s ease-out;
+  animation: fadeUp 0.6s ease-out both;
+}
+
+/* Staggered Delays for Cascading Section Loading */
+.delay-1 { animation-delay: 150ms; }
+.delay-2 { animation-delay: 300ms; }
+.delay-3 { animation-delay: 450ms; }
+.delay-4 { animation-delay: 600ms; }
+.delay-5 { animation-delay: 750ms; }
+
+/* Custom Dark Scrollbar with Neon Teal interaction */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 5px;
+  border: 2px solid #000000;
+}
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+  background: #00e5bf;
 }

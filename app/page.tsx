@@ -1,61 +1,30 @@
 import Link from 'next/link';
 import ProjectCard from './components/ProjectCard';
 import SkillCard from './components/SkillCard';
+import Typewriter from './components/Typewriter';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-12">
+    <main className="min-h-screen bg-black text-white px-6 py-12 relative overflow-hidden">
+      
+      {/* Ambient background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#00e5bf] opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto fade-up">
+      <div className="max-w-7xl mx-auto fade-up relative z-10">
 
         {/* ================= Intro ================= */}
         <h1 className="text-4xl font-bold mb-4 tracking-tight">
           Vikramaditya Mishra
         </h1>
 
-        <p className="text-lg text-green-400/90 font-medium mb-8">
-          AI Engineer | Generative AI | LLM
+        <p className="text-lg text-[#00e5bf]/90 font-medium font-mono mb-8 min-h-[1.75rem]">
+          <Typewriter text="AI Engineer | Generative AI | LLM" speed={60} delay={400} />
         </p>
 
-        {/* ================= Actions ================= */}
-        <div className="flex flex-wrap gap-4 mb-12">
-
-          {/* GitHub */}
-          <a
-            href="https://github.com/kyunbhaii"
-            target="_blank"
-            className="relative overflow-hidden group px-4 py-2 border border-gray-700 rounded-lg 
-            text-gray-300 flex items-center gap-2
-            transition-all duration-300 ease-out
-            hover:border-green-400 hover:text-green-400
-            hover:shadow-[0_0_12px_rgba(74,222,128,0.1)]
-            active:scale-[0.98]"
-          >
-            <span className="absolute inset-0 bg-green-400/10 w-0 group-hover:w-full transition-all duration-300 ease-out" />
-            <span className="relative z-10">GitHub</span>
-          </a>
-
-          {/* Resume */}
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            className="relative overflow-hidden group px-4 py-2 border border-gray-700 rounded-lg 
-            text-gray-300 flex items-center gap-2
-            transition-all duration-300 ease-out
-            hover:border-green-400 hover:text-green-400
-            hover:shadow-[0_0_12px_rgba(74,222,128,0.1)]
-            active:scale-[0.98]"
-          >
-            <span className="absolute inset-0 bg-green-400/10 w-0 group-hover:w-full transition-all duration-300 ease-out" />
-            <span className="relative z-10">Resume</span>
-          </a>
-
-        </div>
-
         {/* ================= About ================= */}
-        <section className="mb-14">
+        <section className="mb-14 fade-up delay-1">
           <h2 className="text-2xl font-semibold mb-5 flex items-center gap-3 tracking-tight">
-            <span className="w-1.5 h-6 bg-green-400 rounded-full shadow-[0_0_10px_rgba(74,222,128,0.6)]"></span>
+            <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             About
           </h2>
 
@@ -73,87 +42,89 @@ export default function Home() {
         </section>
 
         {/* ================= Experience ================= */}
-        <section>
+        <section className="fade-up delay-2">
           <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
-            <span className="w-1.5 h-6 bg-green-400 rounded-full shadow-[0_0_10px_rgba(74,222,128,0.6)]"></span>
+            <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             Experience
           </h2>
+          <div className="border border-gray-800 p-6 sm:p-8 rounded-2xl bg-[#0a0a0a]/50">
+            <div className="relative border-l-2 border-gray-800 ml-3 pl-6 space-y-10 py-2">
+              <div className="relative group">
+                <span className="w-3 h-3 absolute -left-[31px] rounded-full bg-[#00e5bf] shadow-[0_0_10px_rgba(0,229,191,0.6)] mt-1.5 group-hover:scale-125 transition-transform duration-300"></span>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
+                  <div>
+                    <h3 className="text-xl font-semibold text-[#00e5bf] font-mono group-hover:text-white transition-colors duration-300">VRCYN</h3>
+                    <p className="text-gray-200 mt-1">Data Science Intern</p>
+                  </div>
+                  <p className="text-[#00e5bf] font-mono text-sm mt-2 sm:mt-0 whitespace-nowrap">Dec 2024 – May 2025</p>
+                </div>
 
-          <div className="border border-gray-800 p-6 rounded-2xl 
-            hover:border-gray-600 hover:bg-gray-900 
-            hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]
-            transition-all duration-300 ease-out"
-          >
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
-              <div>
-                <h3 className="text-xl font-semibold">Data Science Intern</h3>
-                <p className="text-gray-400 mt-1">VRCYN</p>
+                <ul className="mt-4 space-y-2 text-gray-400 text-sm">
+                  <li className="flex items-start">
+                      <span className="mr-2 text-gray-600">{"•"}</span>
+                      <span>Assisted in preparing, cleaning, and structuring customer feedback datasets (chat logs and surveys) using Python, NLTK, spaCy, and SQL.</span>
+                  </li>
+                  <li className="flex items-start">
+                      <span className="mr-2 text-gray-600">{"•"}</span>
+                      <span>Explored and implemented NLP techniques, including LSTM-based sentiment analysis, keyword extraction, and basic topic modeling to identify customer pain points and satisfaction drivers.</span>
+                  </li>
+                  <li className="flex items-start">
+                      <span className="mr-2 text-gray-600">{"•"}</span>
+                      <span>Contributed to insights that supported data-driven discussions for improving product features, customer experience, and internal decision-making.</span>
+                  </li>
+                </ul>
               </div>
-              <p className="text-green-400 text-sm mt-2 sm:mt-0">Dec 2024 – May 2025</p>
             </div>
-
-            <ul className="mt-4 space-y-3 text-gray-400 text-sm">
-              <li className="flex items-start">
-                  <span className="mr-2">•</span>
-                  <span>Assisted in preparing, cleaning, and structuring customer feedback datasets (chat logs and surveys) using Python, NLTK, spaCy, and SQL.</span>
-              </li>
-              <li className="flex items-start">
-                  <span className="mr-2">•</span>
-                  <span>Explored and implemented NLP techniques, including LSTM-based sentiment analysis, keyword extraction, and basic topic modeling to identify customer pain points and satisfaction drivers.</span>
-              </li>
-              <li className="flex items-start">
-                  <span className="mr-2">•</span>
-                  <span>Contributed to insights that supported data-driven discussions for improving product features, customer experience, and internal decision-making.</span>
-              </li>
-            </ul>
           </div>
         </section>
 
         {/* ================= Featured Projects ================= */}
-        <section className="mt-20">
+        <section className="mt-20 fade-up delay-3">
           <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
-            <span className="w-1.5 h-6 bg-green-400 rounded-full shadow-[0_0_10px_rgba(74,222,128,0.6)]"></span>
+            <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             Featured Projects
           </h2>
 
-          <div className="space-y-6">
+          <div className="border border-gray-800 p-6 sm:p-8 rounded-2xl bg-[#0a0a0a]/50">
+            <div className="space-y-6">
 
-            <ProjectCard
-              title="ClaimLens"
-              description="Built the core RAG and reasoning pipeline for an insurance policy analysis system."
-              details={[
-                "Hybrid retrieval (Dense + BM25 + Cross-Encoder) with structured reasoning.",
-                "Performance metrics: Recall@20: 0.93 | MRR: 0.89"
-              ]}
-              techStack={["LangChain", "FAISS", "RAG", "LLM"]}
-              githubUrl="https://github.com/kyunbhaii/ClaimLens-ET-Hackathon"
-              projectUrl="/projects/claimlens"
-              date="Jan 2026 – Mar 2026"
-              dateLayout="inline"
-            />
+              <ProjectCard
+                title="ClaimLens"
+                description="Built the core RAG and reasoning pipeline for an insurance policy analysis system."
+                details={[
+                  "Hybrid retrieval (Dense + BM25 + Cross-Encoder) with structured reasoning.",
+                  "Performance metrics: Recall@20: 0.93 | MRR: 0.89"
+                ]}
+                techStack={["LangChain", "FAISS", "RAG", "LLM"]}
+                githubUrl="https://github.com/kyunbhaii/ClaimLens-ET-Hackathon"
+                projectUrl="/projects/claimlens"
+                date="Jan 2026 – Mar 2026"
+                dateLayout="inline"
+              />
 
-            <ProjectCard
-              title="Insurance-Aware RAG"
-              description="Modular RAG pipeline with deterministic clause parsing and hybrid retrieval."
-              details={[
-                "Configured deterministic clause parsing for accurate retrieval.",
-                "Implemented hybrid dense and sparse search architecture."
-              ]}
-              techStack={["FAISS", "BM25", "Cross-Encoder", "RAG"]}
-              githubUrl="https://github.com/kyunbhaii/Insurance-Aware-RAG"
-              date="Jan 2026 – Feb 2026"
-              dateLayout="inline"
-            />
+              <ProjectCard
+                title="Insurance-Aware RAG"
+                description="Modular RAG pipeline with deterministic clause parsing and hybrid retrieval."
+                details={[
+                  "Configured deterministic clause parsing for accurate retrieval.",
+                  "Implemented hybrid dense and sparse search architecture."
+                ]}
+                techStack={["FAISS", "BM25", "Cross-Encoder", "RAG"]}
+                githubUrl="https://github.com/kyunbhaii/Insurance-Aware-RAG"
+                date="Jan 2026 – Feb 2026"
+                dateLayout="inline"
+              />
 
+            </div>
           </div>
 
           {/* ================= CTA ================= */}
           <div className="flex justify-center mt-10">
             <Link
               href="/projects"
-              className="relative px-8 py-3 border border-gray-700 rounded-xl text-gray-300 overflow-hidden group transition-all duration-300 ease-out hover:border-green-400 hover:text-green-400 hover:shadow-[0_0_20px_rgba(74,222,128,0.15)] active:scale-[0.98]"
+              className="relative px-8 py-3 border border-gray-700 rounded-xl text-gray-300 overflow-hidden group transition-all duration-300 ease-out hover:border-[#00e5bf] hover:text-[#00e5bf] hover:shadow-[0_0_20px_rgba(74,222,128,0.15)] active:scale-[0.98]"
             >
-              <span className="absolute inset-0 bg-green-400/10 w-0 group-hover:w-full transition-all duration-300 ease-out" />
+              <span className="absolute inset-0 bg-[#00e5bf]/10 w-0 group-hover:w-full transition-all duration-300 ease-out" />
 
               <span className="relative z-10 flex items-center gap-2">
                 View All Projects →
@@ -164,13 +135,14 @@ export default function Home() {
         </section>
 
         {/* ================= Skills ================= */}
-        <section className="mt-20">
+        <section className="mt-20 fade-up delay-4">
           <h2 className="text-2xl font-semibold mb-8 flex items-center gap-3 tracking-tight">
-            <span className="w-1.5 h-6 bg-green-400 rounded-full shadow-[0_0_10px_rgba(74,222,128,0.6)]"></span>
+            <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             Skills
           </h2>
 
-          <div className="space-y-6">
+          <div className="border border-gray-800 p-6 sm:p-8 rounded-2xl">
+            <div className="space-y-6">
 
             {/* Row 1 */}
             <div className="grid md:grid-cols-3 gap-6">
@@ -195,88 +167,101 @@ export default function Home() {
               </div>
             </div>
 
+            </div>
           </div>
         </section>
 
 {/* ================= Achievements ================= */}
-        <section className="mt-20">
+        <section className="mt-20 fade-up delay-5">
           <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
-            <span className="w-1.5 h-6 bg-green-400 rounded-full shadow-[0_0_10px_rgba(74,222,128,0.6)]"></span>
+            <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             Achievements
           </h2>
 
-          <div className="space-y-6">
-            {/* IFERP */}
-            <div className="border border-gray-800 p-6 rounded-2xl hover:border-gray-600 hover:bg-gray-900 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all duration-300 ease-out">
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold">IFERP | Conference</h3>
+          <div className="border border-gray-800 p-6 sm:p-8 rounded-2xl bg-[#0a0a0a]/50">
+            <div className="relative border-l-2 border-gray-800 ml-3 pl-6 space-y-10 py-2">
+              
+              {/* IFERP */}
+              <div className="relative group">
+                <span className="w-3 h-3 absolute -left-[31px] rounded-full bg-[#00e5bf] shadow-[0_0_10px_rgba(0,229,191,0.6)] mt-1.5 group-hover:scale-125 transition-transform duration-300"></span>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
+                  <div>
+                    <h3 className="text-xl font-semibold text-[#00e5bf] font-mono group-hover:text-white transition-colors duration-300">IFERP | Conference</h3>
+                  </div>
+                  <a
+                    href="https://github.com/kyunbhaii/Real-Time-Sign-Language-Detection-CNN-"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative text-xs border border-gray-700 px-3 py-1.5 rounded hover:border-[#00e5bf] hover:text-[#00e5bf] transition overflow-hidden ml-auto shrink-0 mt-2 sm:mt-0"
+                  >
+                    <span className="absolute inset-0 bg-[#00e5bf]/10 w-0 group-hover:w-full transition-all duration-300 ease-out" />
+                    <span className="relative z-10">GitHub ↗</span>
+                  </a>
                 </div>
-                <a
-                  href="https://github.com/kyunbhaii/Real-Time-Sign-Language-Detection-CNN-"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative text-xs border border-gray-700 px-3 py-1.5 rounded hover:border-green-400 hover:text-green-400 transition overflow-hidden group ml-auto shrink-0 mt-2 sm:mt-0"
-                >
-                  <span className="absolute inset-0 bg-green-400/10 w-0 group-hover:w-full transition-all duration-300 ease-out" />
-                  <span className="relative z-10">GitHub ↗</span>
-                </a>
+                <ul className="mt-2 text-gray-400 text-sm">
+                  <li className="flex items-start">
+                      <span className="mr-2 text-gray-600">{"•"}</span>
+                      <span>Paper accepted at IFERP International Conference on "Real-Time Sign Language Detection Using CNN and OpenCV" (2024).</span>
+                  </li>
+                </ul>
               </div>
-              <ul className="mt-2 space-y-3 text-gray-400 text-sm">
-                <li className="flex items-start">
-                    <span className="mr-2 text-green-500/50">•</span>
-                    <span>Paper accepted at IFERP International Conference on "Real-Time Sign Language Detection Using CNN and OpenCV" (2024).</span>
-                </li>
-              </ul>
-            </div>
 
-            {/* GDSC */}
-            <div className="border border-gray-800 p-6 rounded-2xl hover:border-gray-600 hover:bg-gray-900 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all duration-300 ease-out">
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold">GDSC | AI/ML Lead</h3>
+              {/* GDSC */}
+              <div className="relative group">
+                <span className="w-3 h-3 absolute -left-[31px] rounded-full bg-[#00e5bf] shadow-[0_0_10px_rgba(0,229,191,0.6)] mt-1.5 group-hover:scale-125 transition-transform duration-300"></span>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
+                  <div>
+                    <h3 className="text-xl font-semibold text-[#00e5bf] font-mono group-hover:text-white transition-colors duration-300">GDSC | AI/ML Lead</h3>
+                  </div>
                 </div>
+                <ul className="mt-2 space-y-2 text-gray-400 text-sm">
+                  <li className="flex items-start">
+                      <span className="mr-2 text-gray-600">{"•"}</span>
+                      <span>Executive member at Google Developer Student Clubs.</span>
+                  </li>
+                  <li className="flex items-start">
+                      <span className="mr-2 text-gray-600">{"•"}</span>
+                      <span>Helped organize multiple technical and ML-focused events under GDSC.</span>
+                  </li>
+                </ul>
               </div>
-              <ul className="mt-2 space-y-3 text-gray-400 text-sm">
-                <li className="flex items-start">
-                    <span className="mr-2 text-green-500/50">•</span>
-                    <span>Executive member at Google Developer Student Clubs.</span>
-                </li>
-                <li className="flex items-start">
-                    <span className="mr-2 text-green-500/50">•</span>
-                    <span>Helped organize multiple technical and ML-focused events under GDSC.</span>
-                </li>
-              </ul>
+
             </div>
           </div>
         </section>
 
         {/* ================= Education ================= */}
-        <section className="mt-20">
+        <section className="mt-20 fade-up delay-5">
           <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
-            <span className="w-1.5 h-6 bg-green-400 rounded-full shadow-[0_0_10px_rgba(74,222,128,0.6)]"></span>
+            <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             Education
           </h2>
 
-          <div className="space-y-6">
-            <div className="border border-gray-800 p-6 rounded-2xl hover:border-gray-600 hover:bg-gray-900 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all duration-300 ease-out">
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                <div>
-                  <h3 className="text-xl font-semibold">Indian Institute of Technology Patna</h3>
-                  <p className="text-gray-400 mt-1">Master of Technology in AI and DSE</p>
+          <div className="border border-gray-800 p-6 sm:p-8 rounded-2xl bg-[#0a0a0a]/50">
+            <div className="relative border-l-2 border-gray-800 ml-3 pl-6 space-y-10 py-2">
+              
+              <div className="relative group">
+                <span className="w-3 h-3 absolute -left-[31px] rounded-full bg-[#00e5bf] shadow-[0_0_10px_rgba(0,229,191,0.6)] mt-1.5 group-hover:scale-125 transition-transform duration-300"></span>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                  <div>
+                    <h3 className="text-xl font-semibold text-[#00e5bf] font-mono group-hover:text-white transition-colors duration-300">Indian Institute of Technology Patna</h3>
+                    <p className="text-gray-200 mt-1">Master of Technology in AI and DSE</p>
+                  </div>
+                  <p className="text-[#00e5bf] font-mono text-sm mt-2 sm:mt-0 whitespace-nowrap">Jan 2026 – Present</p>
                 </div>
-                <p className="text-green-400 text-sm mt-2 sm:mt-0">Jan 2026 – Present</p>
               </div>
-            </div>
 
-            <div className="border border-gray-800 p-6 rounded-2xl hover:border-gray-600 hover:bg-gray-900 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all duration-300 ease-out">
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                <div>
-                  <h3 className="text-xl font-semibold">Lovely Professional University</h3>
-                  <p className="text-gray-400 mt-1">Bachelor of Technology in Computer Science and Engineering</p>
+              <div className="relative group">
+                <span className="w-3 h-3 absolute -left-[31px] rounded-full bg-[#00e5bf] shadow-[0_0_10px_rgba(0,229,191,0.6)] mt-1.5 group-hover:scale-125 transition-transform duration-300"></span>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                  <div>
+                    <h3 className="text-xl font-semibold text-[#00e5bf] font-mono group-hover:text-white transition-colors duration-300">Lovely Professional University</h3>
+                    <p className="text-gray-200 mt-1">Bachelor of Technology in Computer Science and Engineering</p>
+                  </div>
+                  <p className="text-[#00e5bf] font-mono text-sm mt-2 sm:mt-0 whitespace-nowrap">Aug 2020 – Aug 2024</p>
                 </div>
-                <p className="text-green-400 text-sm mt-2 sm:mt-0 whitespace-nowrap">Aug 2020 – Aug 2024</p>
               </div>
+
             </div>
           </div>
         </section>
