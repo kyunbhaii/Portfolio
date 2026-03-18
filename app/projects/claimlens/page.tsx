@@ -165,6 +165,165 @@ export default function ClaimLensPage() {
                         </ul>
                     </section>
 
+                    {/* ================= Architecture ================= */}
+                    <section className="mb-16">
+                        <h2 className="text-xl font-semibold mb-4 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>Architecture</h2>
+                        <p className="text-gray-400 leading-relaxed mb-6">
+                            The two diagrams below translate the system description into a product view and an execution flow, making it easier to see how ClaimLens moves from a policy question to a grounded answer.
+                        </p>
+
+                        <div className="border border-gray-700 rounded-2xl p-6 bg-[radial-gradient(circle_at_top,_rgba(0,229,191,0.08),_transparent_45%),#0a0a0a] mb-8">
+                            <div className="flex flex-col gap-2 mb-6">
+                                <p className="text-xs text-[#00e5bf]/60 font-mono tracking-[0.3em] uppercase">Diagram 01</p>
+                                <h3 className="text-base font-semibold text-gray-200">ClaimLens System Surface</h3>
+                                <p className="text-sm text-gray-500">
+                                    A high-level product view showing how the experience layer, service layer, and retrieval/reasoning engine work together.
+                                </p>
+                            </div>
+
+                            <div className="flex flex-col gap-3 lg:flex-row lg:items-stretch lg:justify-between">
+                                {[
+                                    { title: "Experience Layer", subtitle: "Portfolio UI / user-facing interactions" },
+                                    { title: "Service Layer", subtitle: "API orchestration and request handling" },
+                                    { title: "ClaimLens Engine", subtitle: "Clause parsing, retrieval, reranking, reasoning" },
+                                ].map((item, idx) => (
+                                    <div key={item.title} className="contents lg:contents">
+                                        <div className={`flex-1 rounded-2xl border px-5 py-5 ${idx === 2 ? "border-[#00e5bf]/40 bg-[#00e5bf]/[0.07] shadow-[0_0_20px_rgba(0,229,191,0.08)]" : "border-[#00e5bf]/20 bg-[#00e5bf]/[0.03]"}`}>
+                                            <p className={`text-sm font-mono ${idx === 2 ? "text-[#00e5bf]" : "text-[#00e5bf]/80"}`}>{item.title}</p>
+                                            <p className="text-xs text-gray-500 mt-2 leading-relaxed">{item.subtitle}</p>
+                                        </div>
+                                        {idx < 2 && (
+                                            <div className="hidden lg:flex items-center justify-center text-[#00e5bf]/35 text-2xl px-1">
+                                                →
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="grid gap-4 mt-6 md:grid-cols-2">
+                                <div className="rounded-xl border border-[#00e5bf]/15 bg-black/30 p-4">
+                                    <p className="text-xs text-[#00e5bf]/55 font-mono uppercase tracking-[0.2em] mb-3">Data Foundation</p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {[
+                                            "Policy Documents",
+                                            "Clause Store",
+                                            "FAISS Index",
+                                            "Metadata Cache",
+                                        ].map((item) => (
+                                            <span key={item} className="rounded-full border border-[#00e5bf]/15 bg-[#00e5bf]/[0.04] px-3 py-1 text-xs text-gray-300">
+                                                {item}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="rounded-xl border border-[#00e5bf]/15 bg-black/30 p-4">
+                                    <p className="text-xs text-[#00e5bf]/55 font-mono uppercase tracking-[0.2em] mb-3">Model Runtime</p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {[
+                                            "Embedding Model",
+                                            "Cross-Encoder",
+                                            "Validated LLM Output",
+                                        ].map((item) => (
+                                            <span key={item} className="rounded-full border border-[#00e5bf]/15 bg-[#00e5bf]/[0.04] px-3 py-1 text-xs text-gray-300">
+                                                {item}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="border border-gray-700 rounded-2xl p-6 bg-[linear-gradient(180deg,rgba(0,229,191,0.06),transparent_24%),#0a0a0a]">
+                            <div className="flex flex-col gap-2 mb-6">
+                                <p className="text-xs text-[#00e5bf]/60 font-mono tracking-[0.3em] uppercase">Diagram 02</p>
+                                <h3 className="text-base font-semibold text-gray-200">ClaimLens Retrieval and Reasoning Flow</h3>
+                                <p className="text-sm text-gray-500">
+                                    The query is normalized, routed through retrieval, and only then passed into a constrained reasoning layer for a grounded final answer.
+                                </p>
+                            </div>
+
+                            <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-stretch">
+                                {[
+                                    { title: "Coverage Query", subtitle: "User asks about claim eligibility or policy terms" },
+                                    { title: "Query Builder", subtitle: "Transforms the request into retrieval-friendly intent" },
+                                    { title: "Pipeline Orchestrator", subtitle: "Coordinates retrieval, reranking, and answer assembly" },
+                                ].map((item, idx) => (
+                                    <div key={item.title} className="contents">
+                                        <div className={`rounded-2xl border px-5 py-5 ${idx === 2 ? "border-[#00e5bf]/40 bg-[#00e5bf]/[0.07] shadow-[0_0_20px_rgba(0,229,191,0.08)]" : "border-[#00e5bf]/20 bg-[#00e5bf]/[0.03]"}`}>
+                                            <p className={`text-sm font-mono ${idx === 2 ? "text-[#00e5bf]" : "text-[#00e5bf]/80"}`}>{item.title}</p>
+                                            <p className="text-xs text-gray-500 mt-2 leading-relaxed">{item.subtitle}</p>
+                                        </div>
+                                        {idx < 2 && (
+                                            <div className="hidden lg:flex items-center justify-center text-[#00e5bf]/35 text-2xl">
+                                                →
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="grid gap-4 mt-6 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center">
+                                <div className="rounded-2xl border border-[#00e5bf]/15 bg-black/30 p-5">
+                                    <p className="text-xs text-[#00e5bf]/55 font-mono uppercase tracking-[0.2em] mb-4">Retrieval Lane</p>
+                                    <div className="space-y-3">
+                                        {[
+                                            "Deterministic clause parsing creates stable retrieval units",
+                                            "Dense retrieval surfaces high-recall policy clauses",
+                                            "Cross-encoder reranking compresses evidence to the strongest set",
+                                        ].map((item) => (
+                                            <div key={item} className="rounded-xl border border-[#00e5bf]/15 bg-[#00e5bf]/[0.04] px-4 py-3 text-sm text-gray-300">
+                                                {item}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="hidden lg:flex items-center justify-center">
+                                    <div className="rounded-full border border-[#00e5bf]/20 bg-[#00e5bf]/[0.05] px-4 py-2 text-xs font-mono text-[#00e5bf]/70">
+                                        evidence pack
+                                    </div>
+                                </div>
+
+                                <div className="rounded-2xl border border-[#00e5bf]/15 bg-black/30 p-5">
+                                    <p className="text-xs text-[#00e5bf]/55 font-mono uppercase tracking-[0.2em] mb-4">Reasoning Lane</p>
+                                    <div className="space-y-3">
+                                        {[
+                                            "Grounded context is passed to the reasoning layer",
+                                            "Strict schema validation rejects malformed answers",
+                                            "Citation checks ensure outputs stay tied to policy clauses",
+                                        ].map((item) => (
+                                            <div key={item} className="rounded-xl border border-[#00e5bf]/15 bg-[#00e5bf]/[0.04] px-4 py-3 text-sm text-gray-300">
+                                                {item}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="grid gap-3 mt-6 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-stretch">
+                                {[
+                                    { title: "Clause Evidence", subtitle: "Top-ranked passages retained for answer generation" },
+                                    { title: "Validation Gate", subtitle: "Pydantic schema and retry logic enforce structure" },
+                                    { title: "Structured Answer", subtitle: "Grounded response with confidence and citations" },
+                                ].map((item, idx) => (
+                                    <div key={item.title} className="contents">
+                                        <div className={`rounded-2xl border px-5 py-5 ${idx === 2 ? "border-[#00e5bf]/45 bg-[#00e5bf]/[0.08] shadow-[0_0_20px_rgba(0,229,191,0.1)]" : "border-[#00e5bf]/20 bg-[#00e5bf]/[0.03]"}`}>
+                                            <p className={`text-sm font-mono ${idx === 2 ? "text-[#00e5bf]" : "text-[#00e5bf]/80"}`}>{item.title}</p>
+                                            <p className="text-xs text-gray-500 mt-2 leading-relaxed">{item.subtitle}</p>
+                                        </div>
+                                        {idx < 2 && (
+                                            <div className="hidden lg:flex items-center justify-center text-[#00e5bf]/35 text-2xl">
+                                                →
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
                     {/* ================= Design Constraints ================= */}
                     <section className="mb-16">
                         <h2 className="text-xl font-semibold mb-3 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>Design Constraints</h2>
@@ -175,166 +334,6 @@ export default function ClaimLensPage() {
                             <li>• Need for traceable and explainable outputs</li>
                             <li>• Minimizing hallucinations in LLM reasoning</li>
                         </ul>
-                    </section>
-
-                    {/* ================= Architecture ================= */}
-                    <section className="mb-16">
-                        <h2 className="text-xl font-semibold mb-4 flex items-center gap-3"><span className="w-1 h-5 bg-[#00e5bf] rounded-full shadow-[0_0_8px_rgba(0,229,191,0.5)]"></span>Architecture</h2>
-
-                        {/* Outer ClaimLens AI container */}
-                        <div className="border border-gray-700 rounded-xl p-5 bg-[#0a0a0a] mb-8">
-                            <p className="text-xs text-[#00e5bf]/50 font-mono mb-4 text-center tracking-widest uppercase">ClaimLens AI</p>
-
-                            {/* Inner system container */}
-                            <div className="border border-[#00e5bf]/10 rounded-lg p-5 mb-4">
-
-                                {/* Top row */}
-                                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-5">
-                                    <div className="border border-[#00e5bf]/30 rounded-lg px-4 py-3 text-center min-w-[130px] bg-[#00e5bf]/[0.03]">
-                                        <p className="text-[#00e5bf]/80 text-sm font-mono">Frontend</p>
-                                        <p className="text-[#00e5bf]/40 text-xs font-mono">(React)</p>
-                                    </div>
-                                    <div className="text-[#00e5bf]/40 text-lg font-mono select-none rotate-90 sm:rotate-0">⇄</div>
-                                    <div className="border border-[#00e5bf]/30 rounded-lg px-4 py-3 text-center min-w-[130px] bg-[#00e5bf]/[0.03]">
-                                        <p className="text-[#00e5bf]/80 text-sm font-mono">Backend</p>
-                                        <p className="text-[#00e5bf]/40 text-xs font-mono">(FastAPI)</p>
-                                    </div>
-                                    <div className="text-[#00e5bf]/40 text-lg font-mono select-none rotate-90 sm:rotate-0">⇄</div>
-                                    <div className="border border-[#00e5bf]/50 rounded-lg px-4 py-3 text-center min-w-[150px] bg-[#00e5bf]/[0.06] shadow-[0_0_12px_rgba(0,229,191,0.08)]">
-                                        <p className="text-[#00e5bf] text-sm font-mono">AI/ML Pipeline</p>
-                                        <p className="text-[#00e5bf]/50 text-xs font-mono">(RAG + LLM)</p>
-                                    </div>
-                                </div>
-
-                                {/* Down arrows */}
-                                <div className="flex justify-center gap-[220px] sm:gap-[276px] mb-4 text-[#00e5bf]/30 text-sm font-mono select-none">
-                                    <span>↓</span>
-                                    <span>↓</span>
-                                </div>
-
-                                {/* Data Layer */}
-                                <div className="border border-[#00e5bf]/10 rounded-lg p-4">
-                                    <p className="text-xs text-[#00e5bf]/40 font-mono mb-3 text-center tracking-widest uppercase">Data Layer</p>
-                                    <div className="flex flex-wrap justify-center gap-3">
-                                        {[
-                                            { name: "PostgreSQL", sub: "(pgvector)" },
-                                            { name: "Redis", sub: "(Cache)" },
-                                            { name: "FAISS/", sub: "pgvector" },
-                                            { name: "S3", sub: "(Documents)" },
-                                        ].map((item) => (
-                                            <div key={item.name} className="border border-[#00e5bf]/30 rounded-md px-3 py-2 text-center min-w-[100px] bg-[#00e5bf]/[0.03]">
-                                                <p className="text-[#00e5bf]/80 text-xs font-mono">{item.name}</p>
-                                                <p className="text-[#00e5bf]/40 text-xs font-mono">{item.sub}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* LLM Providers */}
-                            <div className="border border-[#00e5bf]/10 rounded-lg p-4">
-                                <p className="text-xs text-[#00e5bf]/40 font-mono mb-3 text-center tracking-widest uppercase">LLM Providers</p>
-                                <div className="flex flex-wrap justify-center gap-3">
-                                    {[
-                                        { name: "Mock", sub: "(Dev)" },
-                                        { name: "Ollama", sub: "(Local)" },
-                                        { name: "AWS Bedrock", sub: "" },
-                                    ].map((item) => (
-                                        <div key={item.name} className="border border-[#00e5bf]/30 rounded-md px-4 py-2 text-center min-w-[110px] bg-[#00e5bf]/[0.03]">
-                                            <p className="text-[#00e5bf]/80 text-xs font-mono">{item.name}</p>
-                                            {item.sub && <p className="text-[#00e5bf]/40 text-xs font-mono">{item.sub}</p>}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* ===== RAG Pipeline Flowchart ===== */}
-                        <h3 className="text-base font-semibold mb-4 text-gray-300 flex items-center gap-2">
-                            <span className="w-0.5 h-4 bg-[#00e5bf]/60 rounded-full"></span>
-                            RAG Pipeline
-                        </h3>
-
-                        <div className="border border-gray-700 rounded-xl p-5 bg-[#0a0a0a] overflow-x-auto flex justify-center">
-                            <div className="flex items-stretch gap-1 sm:gap-2">
-
-                                {/* ── Spine: Raw Input → Query Builder → Pipeline ── */}
-                                <div className="flex items-center gap-1 sm:gap-2">
-
-                                    {/* Raw Clinical Input */}
-                                    <div className="border border-[#00e5bf]/30 rounded-lg p-2 sm:p-3 text-center bg-[#00e5bf]/[0.03] w-28 sm:w-32 flex flex-col items-center justify-center min-h-[110px]">
-                                        <p className="text-[#00e5bf]/80 text-xs sm:text-sm font-mono leading-tight">Raw Clinical Input</p>
-                                        <p className="text-[#00e5bf]/40 text-[10px] sm:text-xs font-mono mt-2">(User Query)</p>
-                                    </div>
-                                    <span className="text-[#00e5bf]/30 font-mono text-sm select-none">→</span>
-
-                                    {/* Query Builder Layer */}
-                                    <div className="border border-[#00e5bf]/30 rounded-lg p-2 sm:p-3 text-center bg-[#00e5bf]/[0.03] w-28 sm:w-32 flex flex-col items-center justify-center min-h-[110px]">
-                                        <p className="text-[#00e5bf]/80 text-xs sm:text-sm font-mono leading-tight">Query Builder</p>
-                                        <p className="text-[#00e5bf]/40 text-[10px] sm:text-xs font-mono mt-2">(LLM Translation)</p>
-                                    </div>
-                                    <span className="text-[#00e5bf]/30 font-mono text-sm select-none">→</span>
-
-                                    {/* Pipeline Layer */}
-                                    <div className="border border-[#00e5bf]/50 rounded-lg p-2 sm:p-3 text-center bg-[#00e5bf]/[0.06] shadow-[0_0_12px_rgba(0,229,191,0.06)] w-28 sm:w-32 flex flex-col items-center justify-center min-h-[110px]">
-                                        <p className="text-[#00e5bf] text-xs sm:text-sm font-mono leading-tight">Pipeline Layer</p>
-                                        <p className="text-[#00e5bf]/50 text-[10px] sm:text-xs font-mono mt-2">(Orchestration)</p>
-                                    </div>
-                                </div>
-
-                                {/* Fork connector — vertical bar splitting into two lanes */}
-                                <div className="flex flex-col justify-center mx-1 select-none">
-                                    <div className="flex items-center">
-                                        <div className="w-2 sm:w-3 border-t border-[#00e5bf]/20"></div>
-                                        <div className="h-[130px] sm:h-[140px] border-r border-[#00e5bf]/20"></div>
-                                    </div>
-                                </div>
-
-                                {/* Two horizontal branches */}
-                                <div className="flex flex-col gap-4 sm:gap-6 justify-center">
-
-                                    {/* Top branch: Retriever lane */}
-                                    <div className="flex items-center gap-1 sm:gap-2">
-                                        <div className="flex items-center gap-0">
-                                            <div className="w-2 sm:w-3 border-t border-[#00e5bf]/20"></div>
-                                            <span className="text-[#00e5bf]/30 font-mono text-sm select-none">→</span>
-                                        </div>
-                                        <div className="border border-[#00e5bf]/30 rounded-lg p-2 sm:p-3 text-center bg-[#00e5bf]/[0.03] w-28 sm:w-32 flex flex-col items-center justify-center min-h-[110px]">
-                                            <p className="text-[#00e5bf]/80 text-xs sm:text-sm font-mono leading-tight">Retriever Layer</p>
-                                            <p className="text-[#00e5bf]/40 text-[10px] sm:text-xs font-mono mt-2 leading-tight">BM25 + Dense<br />↓<br />Cross-Encoder</p>
-                                        </div>
-                                        <span className="text-[#00e5bf]/30 font-mono text-sm select-none">→</span>
-                                        <div className="border border-[#00e5bf]/30 rounded-lg p-2 sm:p-3 text-center bg-[#00e5bf]/[0.03] w-28 sm:w-32 flex flex-col items-center justify-center min-h-[110px]">
-                                            <p className="text-[#00e5bf]/80 text-xs sm:text-sm font-mono leading-tight">Vector Store</p>
-                                            <p className="text-[#00e5bf]/40 text-[10px] sm:text-xs font-mono mt-2">+ BM25 Index</p>
-                                        </div>
-                                    </div>
-
-                                    {/* Bottom branch: Reasoning lane */}
-                                    <div className="flex items-center gap-1 sm:gap-2">
-                                        <div className="flex items-center gap-0">
-                                            <div className="w-2 sm:w-3 border-t border-[#00e5bf]/20"></div>
-                                            <span className="text-[#00e5bf]/30 font-mono text-sm select-none">→</span>
-                                        </div>
-                                        <div className="border border-[#00e5bf]/30 rounded-lg p-2 sm:p-3 text-center bg-[#00e5bf]/[0.03] w-28 sm:w-32 flex flex-col items-center justify-center min-h-[110px]">
-                                            <p className="text-[#00e5bf]/80 text-xs sm:text-sm font-mono leading-tight">Reasoning Layer</p>
-                                            <p className="text-[#00e5bf]/40 text-[10px] sm:text-xs font-mono mt-2 leading-tight">(LLM +<br />Validation)</p>
-                                        </div>
-                                        <span className="text-[#00e5bf]/30 font-mono text-sm select-none">→</span>
-                                        <div className="border border-[#00e5bf]/30 rounded-lg p-2 sm:p-3 text-center bg-[#00e5bf]/[0.03] w-28 sm:w-32 flex flex-col items-center justify-center min-h-[110px]">
-                                            <p className="text-[#00e5bf]/80 text-xs sm:text-sm font-mono leading-tight">Output Schema</p>
-                                            <p className="text-[#00e5bf]/40 text-[10px] sm:text-xs font-mono mt-2">(Pydantic)</p>
-                                        </div>
-                                        <span className="text-[#00e5bf]/30 font-mono text-sm select-none">→</span>
-                                        <div className="border border-[#00e5bf]/50 rounded-lg p-2 sm:p-3 text-center bg-[#00e5bf]/[0.06] shadow-[0_0_12px_rgba(0,229,191,0.06)] w-28 sm:w-32 flex flex-col items-center justify-center min-h-[110px]">
-                                            <p className="text-[#00e5bf] text-xs sm:text-sm font-mono leading-tight">Structured Answer</p>
-                                            <p className="text-[#00e5bf]/50 text-[10px] sm:text-xs font-mono mt-2">(RAGResponse)</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
                     </section>
 
                     {/* ================= Key Engineering Decisions ================= */}

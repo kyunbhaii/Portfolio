@@ -5,26 +5,31 @@ import Typewriter from './components/Typewriter';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-12 relative overflow-hidden">
+    <main className="min-h-screen bg-black text-white px-6 py-12 relative overflow-hidden soft-grid">
 
       {/* Ambient background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#00e5bf] opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(circle_at_top,_rgba(0,229,191,0.08),_transparent_52%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto fade-up relative z-10">
 
         {/* ================= Intro ================= */}
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 mb-12 mt-4">
-          <div>
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4 tracking-tight">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-8 mb-16 mt-4">
+          <div className="max-w-3xl">
+            <p className="section-kicker mb-4">Portfolio 2026</p>
+            <h1 className="text-4xl sm:text-6xl font-semibold mb-4 tracking-tight leading-none">
               Vikramaditya Mishra
             </h1>
-            <p className="text-lg sm:text-xl text-[#00e5bf]/90 font-medium font-mono min-h-[1.75rem]">
+            <p className="text-lg sm:text-xl text-[#00e5bf]/90 font-medium font-mono min-h-[1.75rem] mb-5">
               <Typewriter text="AI Engineer | Generative AI | LLM" speed={60} delay={400} />
+            </p>
+            <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-2xl">
+              Building retrieval systems, evaluation pipelines, and structured LLM workflows for domains where accuracy, traceability, and reliability actually matter.
             </p>
           </div>
 
           {/* GitHub + Resume — top right, aligned with name, plain text style */}
-          <div className="flex items-center gap-6 shrink-0 mt-1">
+          <div className="flex items-center gap-6 shrink-0 mt-1 sm:pt-8">
             <a
               href="https://github.com/kyunbhaii"
               target="_blank"
@@ -45,13 +50,13 @@ export default function Home() {
         </div>
 
         {/* ================= About ================= */}
-        <section id="about" className="mb-14 fade-up delay-1">
-          <h2 className="text-2xl font-semibold mb-5 flex items-center gap-3 tracking-tight">
+        <section id="about" className="mb-16 fade-up delay-1">
+          <h2 className="section-title text-2xl font-semibold mb-5 flex items-center gap-3 tracking-tight">
             <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             About
           </h2>
 
-          <div className="text-gray-400 space-y-4 leading-relaxed">
+          <div className="surface-panel rounded-2xl p-6 sm:p-8 text-gray-400 space-y-4 leading-relaxed">
             <p>
               <span className="text-gray-200 font-medium">AI/ML Engineer</span> focused on building production-grade <span className="text-gray-200 font-medium">Retrieval-Augmented Generation systems</span> and intelligent workflows for real-world, high-stakes domains.
             </p>
@@ -66,11 +71,11 @@ export default function Home() {
 
         {/* ================= Experience ================= */}
         <section id="experience" className="fade-up delay-2">
-          <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
+          <h2 className="section-title text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
             <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             Experience
           </h2>
-          <div className="border border-gray-800 p-6 sm:p-8 rounded-2xl bg-[#0a0a0a]/50">
+          <div className="surface-panel p-6 sm:p-8 rounded-2xl">
             <div className="relative border-l-2 border-gray-800 ml-3 pl-6 space-y-10 py-2">
               <div className="relative group">
                 <span className="w-3 h-3 absolute -left-[31px] rounded-full bg-[#00e5bf] shadow-[0_0_10px_rgba(0,229,191,0.6)] mt-1.5 group-hover:scale-125 transition-transform duration-300"></span>
@@ -103,12 +108,12 @@ export default function Home() {
 
         {/* ================= Featured Projects ================= */}
         <section id="projects" className="mt-20 fade-up delay-3">
-          <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
+          <h2 className="section-title text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
             <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             Featured Projects
           </h2>
 
-          <div className="border border-gray-800 p-6 sm:p-8 rounded-2xl bg-[#0a0a0a]/50">
+          <div className="surface-panel p-6 sm:p-8 rounded-2xl">
             <div className="space-y-6">
 
               <ProjectCard
@@ -162,12 +167,12 @@ export default function Home() {
 
         {/* ================= Skills ================= */}
         <section id="skills" className="mt-20 fade-up delay-4">
-          <h2 className="text-2xl font-semibold mb-8 flex items-center gap-3 tracking-tight">
+          <h2 className="section-title text-2xl font-semibold mb-8 flex items-center gap-3 tracking-tight">
             <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             Skills
           </h2>
 
-          <div className="border border-gray-800 p-6 sm:p-8 rounded-2xl">
+          <div className="surface-panel p-6 sm:p-8 rounded-2xl">
             <div className="space-y-6">
 
               {/* Row 1 */}
@@ -199,12 +204,12 @@ export default function Home() {
 
         {/* ================= Achievements ================= */}
         <section id="achievements" className="mt-20 fade-up delay-5">
-          <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
+          <h2 className="section-title text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
             <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             Achievements
           </h2>
 
-          <div className="border border-gray-800 p-6 sm:p-8 rounded-2xl bg-[#0a0a0a]/50">
+          <div className="surface-panel p-6 sm:p-8 rounded-2xl">
             <div className="relative border-l-2 border-gray-800 ml-3 pl-6 space-y-10 py-2">
 
               {/* IFERP */}
@@ -227,7 +232,7 @@ export default function Home() {
                 <ul className="mt-2 text-gray-400 text-sm">
                   <li className="flex items-start">
                     <span className="mr-2 text-gray-600">{"•"}</span>
-                    <span>Paper accepted at IFERP International Conference on "Real-Time Sign Language Detection Using CNN and OpenCV" (2024).</span>
+                    <span>Paper accepted at IFERP International Conference on &quot;Real-Time Sign Language Detection Using CNN and OpenCV&quot; (2024).</span>
                   </li>
                 </ul>
               </div>
@@ -258,12 +263,12 @@ export default function Home() {
 
         {/* ================= Education ================= */}
         <section id="education" className="mt-20 fade-up delay-5">
-          <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
+          <h2 className="section-title text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
             <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
             Education
           </h2>
 
-          <div className="border border-gray-800 p-6 sm:p-8 rounded-2xl bg-[#0a0a0a]/50">
+          <div className="surface-panel p-6 sm:p-8 rounded-2xl">
             <div className="relative border-l-2 border-gray-800 ml-3 pl-6 space-y-10 py-2">
 
               <div className="relative group">
