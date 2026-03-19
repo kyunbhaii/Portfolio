@@ -648,23 +648,26 @@ button {
   background: var(--panel-solid);
 }
 
+ /* Dark mode (default): show sun icon + "Night Mode" label, hide moon */
 .theme-toggle-moon,
-[data-theme="light"] .theme-toggle-label-night,
-[data-theme="light"] .theme-toggle-sun {
+.theme-toggle-label-light {
   display: none;
 }
 
-[data-theme="light"] .theme-toggle-label-light,
-[data-theme="light"] .theme-toggle-moon {
+.theme-toggle-sun,
+.theme-toggle-label-night {
   display: block;
 }
 
-.theme-toggle-label-night {
-  display: inline;
+/* Light mode: show moon icon + "Light Mode" label, hide sun */
+[data-theme="light"] .theme-toggle-sun,
+[data-theme="light"] .theme-toggle-label-night {
+  display: none;
 }
 
-.theme-toggle-label-light {
-  display: none;
+[data-theme="light"] .theme-toggle-moon,
+[data-theme="light"] .theme-toggle-label-light {
+  display: block;
 }
 
 @keyframes fadeUp {
