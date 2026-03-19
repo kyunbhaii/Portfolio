@@ -35,17 +35,14 @@ export default function RootLayout({
               (() => {
                 try {
                   const stored = localStorage.getItem('portfolio-theme');
-                  const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
                   const theme = stored === 'light' || stored === 'dark'
                     ? stored
-                    : systemPrefersLight
-                      ? 'light'
-                      : 'dark';
+                    : 'light';
                   document.documentElement.dataset.theme = theme;
                   document.documentElement.style.colorScheme = theme;
                 } catch (error) {
-                  document.documentElement.dataset.theme = 'dark';
-                  document.documentElement.style.colorScheme = 'dark';
+                  document.documentElement.dataset.theme = 'light';
+                  document.documentElement.style.colorScheme = 'light';
                 }
               })();
             `,
