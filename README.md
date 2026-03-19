@@ -1,6 +1,6 @@
 ## Portfolio Architecture
 
-This portfolio is built to showcase system-level AI engineering with a focus on retrieval, reasoning, and evaluation.
+This portfolio showcases work in building practical AI systems, with a focus on real-world applications and scalable engineering.
 
 - **Framework:** Next.js (App Router)  
 - **Styling:** Tailwind CSS with a custom Neon Teal (`#00e5bf`) dark theme  
