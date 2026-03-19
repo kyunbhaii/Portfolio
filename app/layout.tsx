@@ -4,6 +4,7 @@ import "./globals.css";
 import StaticFooter from "./components/StaticFooter";
 import FloatingDock from "./components/FloatingDock";
 import NavigationTracker from "./components/NavigationTracker";
+import { ThemeProvider } from "./components/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,14 +27,37 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (() => {
+                try {
+                  const stored = localStorage.getItem('portfolio-theme');
+                  const theme = stored === 'light' || stored === 'dark'
+                    ? stored
+                    : 'light';
+                  document.documentElement.dataset.theme = theme;
+                  document.documentElement.style.colorScheme = theme;
+                } catch (error) {
+                  document.documentElement.dataset.theme = 'light';
+                  document.documentElement.style.colorScheme = 'light';
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NavigationTracker />
-        {children}
-        <FloatingDock />
-        <StaticFooter />
+        <ThemeProvider>
+          <NavigationTracker />
+          {children}
+          <FloatingDock />
+          <StaticFooter />
+        </ThemeProvider>
       </body>
     </html>
   );

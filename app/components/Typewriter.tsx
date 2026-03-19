@@ -40,7 +40,7 @@ export default function Typewriter({
     return (
         <span className="inline-block relative">
             {displayedText}
-            <span className="animate-pulse font-bold text-[#00e5bf] inline-block w-[0.6em] ml-1 opacity-80">
+            <span className="animate-pulse font-bold text-current inline-block w-[0.6em] ml-1 opacity-80">
                 _
             </span>
         </span>

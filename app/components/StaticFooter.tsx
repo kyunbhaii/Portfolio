@@ -1,7 +1,9 @@
 "use client";
 
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import ThemeToggleButton from './ThemeToggleButton';
+import UtilityTextLink from './UtilityTextLink';
+import { footerLinks, profile } from '../data/site';
 
 export default function StaticFooter() {
   const pathname = usePathname();
@@ -9,46 +11,34 @@ export default function StaticFooter() {
   const isProjects = pathname.startsWith('/projects');
 
   return (
-    <footer className="w-full border-t border-gray-800 bg-[#0a0a0a] py-10">
+    <footer className="w-full border-t py-10 theme-border-soft theme-solid-panel">
       <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
 
-        <div className="text-gray-400 text-sm font-mono tracking-wide mb-4 md:mb-0">
-          © Vikramaditya Mishra | Built with Love
+        <div className="theme-muted theme-footer-tone text-sm font-mono tracking-wide mb-4 md:mb-0">
+          © {profile.name} | Built with Love
         </div>
 
-        <div className="flex flex-wrap justify-center items-center gap-8 text-sm font-mono tracking-wide text-gray-400">
+        <div className="flex flex-wrap justify-center items-center gap-8 text-sm font-mono tracking-wide theme-muted theme-footer-tone">
           {!isHome && (
-            <Link href="/" className="hover:text-[#00e5bf] hover:scale-125 transform transition-all duration-200 ease-out inline-block relative group">
+            <UtilityTextLink href="/">
               Home
-              <span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-            </Link>
+            </UtilityTextLink>
           )}
           {!isProjects && (
-            <Link href="/projects" className="hover:text-[#00e5bf] hover:scale-125 transform transition-all duration-200 ease-out inline-block relative group">
+            <UtilityTextLink href="/projects">
               Projects
-              <span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-            </Link>
+            </UtilityTextLink>
           )}
-          <a href="https://x.com/kyunbhaii" target="_blank" rel="noopener noreferrer" className="hover:text-[#00e5bf] hover:scale-125 transform transition-all duration-200 ease-out inline-block relative group">
-            X
-            <span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-          </a>
-          <a href="https://www.linkedin.com/in/scmvikram/" target="_blank" rel="noopener noreferrer" className="hover:text-[#00e5bf] hover:scale-125 transform transition-all duration-200 ease-out inline-block relative group">
-            LinkedIn
-            <span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-          </a>
-          <a href="https://github.com/kyunbhaii" target="_blank" rel="noopener noreferrer" className="hover:text-[#00e5bf] hover:scale-125 transform transition-all duration-200 ease-out inline-block relative group">
-            GitHub
-            <span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-          </a>
-          <a href="mailto:vikrmadityamishra@gmail.com" className="hover:text-[#00e5bf] hover:scale-125 transform transition-all duration-200 ease-out inline-block relative group">
-            Email
-            <span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-          </a>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-[#00e5bf] hover:scale-125 transform transition-all duration-200 ease-out inline-block relative group">
-            Resume
-            <span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-          </a>
+          {footerLinks.map((link) => (
+            <UtilityTextLink
+              key={link.label}
+              href={link.href}
+              external={link.external}
+            >
+              {link.label}
+            </UtilityTextLink>
+          ))}
+          <ThemeToggleButton className="ml-1" />
         </div>
       </div>
     </footer>

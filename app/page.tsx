@@ -1,94 +1,99 @@
 import Link from 'next/link';
+import BoxActionLink from './components/BoxActionLink';
+import InlineAccentLink from './components/InlineAccentLink';
 import ProjectCard from './components/ProjectCard';
+import SectionHeading from './components/SectionHeading';
 import SkillCard from './components/SkillCard';
+import ThemeToggleButton from './components/ThemeToggleButton';
 import Typewriter from './components/Typewriter';
+import UtilityTextLink from './components/UtilityTextLink';
+import { featuredProjects } from './data/projects';
+import { profile } from './data/site';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-12 relative overflow-hidden soft-grid">
+    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] px-6 py-12 relative overflow-hidden soft-grid">
 
       {/* Ambient background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#00e5bf] opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(circle_at_top,_rgba(0,229,191,0.08),_transparent_52%)] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[var(--accent)] opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(circle_at_top,var(--page-glow),transparent_52%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto fade-up relative z-10">
 
         {/* ================= Intro ================= */}
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-8 mb-16 mt-4">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-8 mb-20 mt-4">
           <div className="max-w-3xl">
             <h1 className="text-4xl sm:text-6xl font-semibold mb-4 tracking-tight leading-none">
-              Vikramaditya Mishra
+              {profile.name}
             </h1>
-            <p className="text-lg sm:text-xl text-[#00e5bf]/90 font-medium font-mono min-h-[1.75rem] mb-5">
+            <p className="theme-editorial-accent text-lg sm:text-xl font-medium font-mono min-h-[1.75rem] mb-5">
               <Typewriter text="AI Engineer | Generative AI | LLM" speed={60} delay={400} />
             </p>
-            <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-2xl">
+            <p className="text-sm sm:text-base theme-muted leading-relaxed max-w-2xl">
               Building GenAI systems, open-source AI projects, and exploring LLM workflows with a focus on experimentation, reliability, and real-world impact.
             </p>
           </div>
 
           {/* GitHub + Resume — top right, aligned with name, plain text style */}
           <div className="flex items-center gap-6 shrink-0 mt-1 sm:pt-8">
-            <a
-              href="https://github.com/kyunbhaii"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-mono text-gray-400 hover:text-[#00e5bf] hover:scale-110 transform transition-all duration-200 ease-out relative group inline-block"
-            >
-              GitHub
-              <span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-            </a>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-mono text-gray-400 hover:text-[#00e5bf] hover:scale-110 transform transition-all duration-200 ease-out relative group inline-block"
-            >
-              Resume
-              <span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
-            </a>
+              <UtilityTextLink
+                href={profile.githubUrl}
+                external
+                className="text-sm font-mono"
+              >
+                GitHub
+              </UtilityTextLink>
+              <UtilityTextLink
+                href={profile.resumeUrl}
+                external
+                className="text-sm font-mono"
+              >
+                Resume
+              </UtilityTextLink>
+              <ThemeToggleButton className="shrink-0" />
           </div>
         </div>
 
         {/* ================= About ================= */}
         <section id="about" className="mb-16 fade-up delay-1">
-          <h2 className="section-title text-2xl font-semibold mb-5 flex items-center gap-3 tracking-tight">
-            <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
-            About
-          </h2>
+          <SectionHeading title="About" className="mb-5" />
 
-          <div className="surface-panel rounded-2xl p-6 sm:p-8 text-gray-400 space-y-4 leading-relaxed">
-            <p>
-              <span className="text-gray-200 font-medium">AI/ML Engineer</span> focused on building production-grade <span className="text-gray-200 font-medium">Retrieval-Augmented Generation systems</span> and intelligent workflows for real-world, high-stakes domains.
-            </p>
-            <p>
-              I work across the full stack of modern AI — <span className="text-gray-200 font-medium">LangChain, LangGraph, FAISS, Pydantic,</span> and <span className="text-gray-200 font-medium">Vector Databases</span> — with a focus on structured retrieval, evaluation frameworks, and reliable LLM reasoning pipelines.
-            </p>
-            <p>
-              I care about systems that work under constraints, not just demos that work on clean data. You can find me on <a href="https://x.com/kyunbhaii" target="_blank" rel="noopener noreferrer" className="text-gray-200 font-medium relative group inline-block transition-colors hover:text-[#00e5bf]">X<span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span></a> and <a href="https://www.linkedin.com/in/scmvikram/" target="_blank" rel="noopener noreferrer" className="text-gray-200 font-medium relative group inline-block transition-colors hover:text-[#00e5bf]">LinkedIn<span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#00e5bf] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span></a>.
-            </p>
+          <div className="editorial-panel rounded-[2rem] p-6 sm:p-8">
+            <div className="grid gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] xl:gap-10">
+              <div className="xl:pr-10 xl:border-r theme-border-soft">
+                <p className="text-lg sm:text-[1.45rem] leading-relaxed theme-copy-strong max-w-2xl">
+                  <span className="theme-copy-strong font-medium">AI/ML Engineer</span> focused on building production-grade <span className="theme-copy-strong font-medium">Retrieval-Augmented Generation systems</span> and intelligent workflows for real-world, high-stakes domains.
+                </p>
+              </div>
+
+              <div className="theme-copy space-y-4 leading-relaxed max-w-2xl">
+                <p>
+                  I work across the full stack of modern AI, <span className="theme-copy-strong font-medium">LangChain, LangGraph, MCP, Vector Databases,</span> and <span className="theme-copy-strong font-medium">Pydantic</span>, with a focus on structured retrieval, evaluation frameworks, and reliable <span className="theme-copy-strong font-medium">LLM</span> reasoning pipelines.
+                </p>
+                <p>
+                  I care about systems that work under constraints, not just demos that work on clean data. You can find me on <InlineAccentLink href={profile.xUrl}>X</InlineAccentLink> and <InlineAccentLink href={profile.linkedInUrl}>LinkedIn</InlineAccentLink>.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* ================= Experience ================= */}
-        <section id="experience" className="fade-up delay-2">
-          <h2 className="section-title text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
-            <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
-            Experience
-          </h2>
-          <div className="surface-panel p-6 sm:p-8 rounded-2xl">
-            <div className="relative border-l-2 border-gray-800 ml-3 pl-6 space-y-10 py-2">
+        <section id="experience" className="fade-up delay-2 section-divider">
+          <SectionHeading title="Experience" />
+          <div className="featured-panel p-6 sm:p-8 rounded-[2rem]">
+            <div className="relative border-l-2 theme-border-subtle ml-3 pl-6 space-y-10 py-2">
               <div className="relative group">
-                <span className="w-3 h-3 absolute -left-[31px] rounded-full bg-[#00e5bf] shadow-[0_0_10px_rgba(0,229,191,0.6)] mt-1.5 group-hover:scale-125 transition-transform duration-300"></span>
+                <span className="timeline-node w-3 h-3 absolute -left-[31px] rounded-full mt-1.5 group-hover:scale-125 transition-transform duration-300"></span>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
                   <div>
-                    <h3 className="text-xl font-semibold text-[#00e5bf] font-mono group-hover:text-white transition-colors duration-300">VRCYN</h3>
-                    <p className="text-gray-200 mt-1">Data Science Intern</p>
+                    <h3 className="text-xl font-semibold theme-accent font-mono theme-hover-foreground transition-colors duration-300">VRCYN</h3>
+                    <p className="theme-copy-strong mt-1">Data Science Intern</p>
                   </div>
-                  <p className="text-[#00e5bf] font-mono text-sm mt-2 sm:mt-0 whitespace-nowrap">Dec 2024 – May 2025</p>
+                  <p className="theme-date font-mono text-sm mt-2 sm:mt-0 whitespace-nowrap">Dec 2024 – May 2025</p>
                 </div>
 
-                <ul className="mt-4 space-y-2 text-gray-400 text-sm">
+                <ul className="mt-4 space-y-2 theme-copy text-sm">
                   <li className="flex items-start">
                     <span className="mr-2 text-gray-600">{"•"}</span>
                     <span>Assisted in preparing, cleaning, and structuring customer feedback datasets (chat logs and surveys) using Python, NLTK, spaCy, and SQL.</span>
@@ -108,57 +113,36 @@ export default function Home() {
         </section>
 
         {/* ================= Featured Projects ================= */}
-        <section id="projects" className="mt-20 fade-up delay-3">
-          <h2 className="section-title text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
-            <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
-            Featured Projects
-          </h2>
+        <section id="projects" className="mt-20 fade-up delay-3 section-divider">
+          <SectionHeading title="Featured Projects" />
 
-          <div className="surface-panel p-6 sm:p-8 rounded-2xl">
-            <div className="space-y-6">
-
-              <ProjectCard
-                title="ClaimLens"
-                description="Built a production-grade Retrieval-Augmented Generation (RAG) pipeline for insurance policy analysis across multi-insurer documents."
-                details={[
-                  "Implemented a deterministic clause splitter parsing legal PDFs into atomic clause chunks across 5 structural formats with canonical clause IDs and duplicate detection.",
-                  "Designed a two-stage retrieval architecture using embeddings + FAISS (Top-40) with cross-encoder reranking (Top-5), achieving Recall@20: 0.93, MRR: 0.89 on single-clause queries.",
-                  "Developed a multi-clause evaluation framework with stage-wise diagnostics, achieving Coverage@20: 0.87, Full Recall@20: 0.60, and MRR: 0.77 on composite multi-hop queries.",
-                  "Developed an LLM reasoning engine with strict Pydantic schema validation, citation grounding, and JSON retry logic returning structured answers with confidence and clause citations."
-                ]}
-                techStack={["LangChain", "FAISS", "RAG", "LLM"]}
-                githubUrl="https://github.com/kyunbhaii/ClaimLens-ET-Hackathon"
-                projectUrl="/projects/claimlens"
-                date="Jan 2026 – Mar 2026"
-                dateLayout="inline"
-              />
-
-              <ProjectCard
-                title="Insurance-Aware RAG"
-                description="Advanced RAG system for extracting and reasoning over complex insurance policy clauses."
-                details={[
-                  "Implemented deterministic clause splitting with stable canonical IDs for perfect evaluation traceability.",
-                  "Built two-stage retrieval: high-recall FAISS dense retrieval + cross-encoder reranking for precision evidence surfacing.",
-                  "Enforced strict Pydantic schemas (RAGResponse, Citation) rejecting hallucinated citations and contradictory LLM outputs."
-                ]}
-                techStack={["FAISS", "BGE", "Cross-Encoder", "LangChain"]}
-                githubUrl="https://github.com/kyunbhaii/Insurance-Aware-RAG"
-                date="Jan 2026 – Feb 2026"
-                dateLayout="inline"
-              />
-
-            </div>
+          <div className="space-y-6">
+            {featuredProjects.map((project) => (
+              <div key={project.title}>
+                <ProjectCard
+                  title={project.title}
+                  description={project.description}
+                  details={project.details}
+                  impact={project.impact}
+                  techStack={project.techStack}
+                  githubUrl={project.githubUrl}
+                  projectUrl={project.projectUrl}
+                  date={project.date}
+                  dateLayout="inline"
+                />
+              </div>
+            ))}
           </div>
 
           {/* ================= CTA ================= */}
           <div className="flex justify-center mt-10">
             <Link
               href="/projects"
-              className="relative px-8 py-3 border border-gray-700 rounded-xl text-gray-300 overflow-hidden group transition-all duration-300 ease-out hover:border-[#00e5bf] hover:text-[#00e5bf] hover:shadow-[0_0_20px_rgba(74,222,128,0.15)] active:scale-[0.98]"
+              className="theme-cta-light-hover relative px-8 py-3 border theme-border-subtle rounded-xl theme-copy-strong overflow-hidden group transition-all duration-300 ease-out hover:border-[var(--accent)] hover:text-[var(--accent)] active:scale-[0.98]"
             >
-              <span className="absolute inset-0 bg-[#00e5bf]/10 w-0 group-hover:w-full transition-all duration-300 ease-out" />
+              <span className="theme-cta-fill absolute inset-0 w-0 group-hover:w-full transition-all duration-300 ease-out" />
 
-              <span className="relative z-10 flex items-center gap-2">
+              <span className="theme-cta-label relative z-10 flex items-center gap-2">
                 View All Projects →
               </span>
             </Link>
@@ -167,70 +151,55 @@ export default function Home() {
         </section>
 
         {/* ================= Skills ================= */}
-        <section id="skills" className="mt-20 fade-up delay-4">
-          <h2 className="section-title text-2xl font-semibold mb-8 flex items-center gap-3 tracking-tight">
-            <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
-            Skills
-          </h2>
+        <section id="skills" className="mt-20 fade-up delay-4 section-divider">
+          <SectionHeading title="Skills" className="mb-8" />
 
-          <div className="surface-panel p-6 sm:p-8 rounded-2xl">
-            <div className="space-y-6">
+          <div className="space-y-6">
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                { title: "AI Systems", skills: ["RAG", "LangChain", "Vector DBs"] },
+                { title: "Machine Learning", skills: ["PyTorch", "TF", "Sklearn", "YOLO"] },
+                { title: "Data & Analysis", skills: ["Pandas", "NumPy", "Matplotlib"] }
+              ].map((s) => (
+                <SkillCard key={s.title} title={s.title} skills={s.skills} />
+              ))}
+            </div>
 
-              {/* Row 1 */}
-              <div className="grid md:grid-cols-3 gap-6">
+            <div className="flex justify-center">
+              <div className="grid md:grid-cols-2 gap-6 max-w-2xl w-full">
                 {[
-                  { title: "AI Systems", skills: ["RAG", "LangChain", "Vector DBs"] },
-                  { title: "Machine Learning", skills: ["PyTorch", "TF", "Sklearn", "YOLO"] },
-                  { title: "Data & Analysis", skills: ["Pandas", "NumPy", "Matplotlib"] }
+                  { title: "Backend", skills: ["FastAPI", "Docker", "Git"] },
+                  { title: "Languages", skills: ["Python", "SQL", "C++"] }
                 ].map((s) => (
                   <SkillCard key={s.title} title={s.title} skills={s.skills} />
                 ))}
               </div>
-
-              {/* Row 2 */}
-              <div className="flex justify-center">
-                <div className="grid md:grid-cols-2 gap-6 max-w-2xl w-full">
-                  {[
-                    { title: "Backend", skills: ["FastAPI", "Docker", "Git"] },
-                    { title: "Languages", skills: ["Python", "SQL", "C++"] }
-                  ].map((s) => (
-                    <SkillCard key={s.title} title={s.title} skills={s.skills} />
-                  ))}
-                </div>
-              </div>
-
             </div>
           </div>
         </section>
 
         {/* ================= Achievements ================= */}
-        <section id="achievements" className="mt-20 fade-up delay-5">
-          <h2 className="section-title text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
-            <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
-            Achievements
-          </h2>
+        <section id="achievements" className="mt-20 fade-up delay-5 section-divider">
+          <SectionHeading title="Achievements" />
 
-          <div className="surface-panel p-6 sm:p-8 rounded-2xl">
-            <div className="relative border-l-2 border-gray-800 ml-3 pl-6 space-y-10 py-2">
+          <div className="editorial-panel p-6 sm:p-8 rounded-[2rem]">
+            <div className="relative border-l-2 theme-border-subtle ml-3 pl-6 space-y-10 py-2">
 
-              {/* IFERP */}
-              <div className="relative group">
-                <span className="w-3 h-3 absolute -left-[31px] rounded-full bg-[#00e5bf] shadow-[0_0_10px_rgba(0,229,191,0.6)] mt-1.5 group-hover:scale-125 transition-transform duration-300"></span>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
+              <div className="group/item relative">
+                <span className="timeline-node w-3 h-3 absolute -left-[31px] rounded-full mt-1.5 group-hover/item:scale-125 transition-transform duration-300"></span>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-3">
                   <div>
-                    <h3 className="text-xl font-semibold text-[#00e5bf] font-mono group-hover:text-white transition-colors duration-300">IFERP | Conference</h3>
+                    <h3 className="text-xl font-semibold theme-accent font-mono theme-hover-foreground transition-colors duration-300">IFERP | Conference</h3>
                   </div>
-                  <a
+                  <BoxActionLink
                     href="https://github.com/kyunbhaii/Real-Time-Sign-Language-Detection-CNN-"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative text-xs border border-gray-700 px-3 py-1.5 rounded hover:border-[#00e5bf] hover:text-[#00e5bf] transition overflow-hidden ml-auto shrink-0 mt-2 sm:mt-0"
+                    external
+                    className="text-xs px-3 py-1.5 ml-auto shrink-0 mt-2 sm:mt-0"
                   >
-                    <span className="absolute inset-0 bg-[#00e5bf]/10 w-0 group-hover:w-full transition-all duration-300 ease-out" />
-                    <span className="relative z-10">GitHub ↗</span>
-                  </a>
+                    GitHub ↗
+                  </BoxActionLink>
                 </div>
-                <ul className="mt-2 text-gray-400 text-sm">
+                <ul className="mt-2 theme-copy text-sm">
                   <li className="flex items-start">
                     <span className="mr-2 text-gray-600">{"•"}</span>
                     <span>Paper accepted at IFERP International Conference on &quot;Real-Time Sign Language Detection Using CNN and OpenCV&quot; (2024).</span>
@@ -238,15 +207,14 @@ export default function Home() {
                 </ul>
               </div>
 
-              {/* GDSC */}
-              <div className="relative group">
-                <span className="w-3 h-3 absolute -left-[31px] rounded-full bg-[#00e5bf] shadow-[0_0_10px_rgba(0,229,191,0.6)] mt-1.5 group-hover:scale-125 transition-transform duration-300"></span>
+              <div className="group/item relative">
+                <span className="timeline-node w-3 h-3 absolute -left-[31px] rounded-full mt-1.5 group-hover/item:scale-125 transition-transform duration-300"></span>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
                   <div>
-                    <h3 className="text-xl font-semibold text-[#00e5bf] font-mono group-hover:text-white transition-colors duration-300">GDSC | AI/ML Lead</h3>
+                    <h3 className="text-xl font-semibold theme-accent font-mono theme-hover-foreground transition-colors duration-300">GDSC | AI/ML Lead</h3>
                   </div>
                 </div>
-                <ul className="mt-2 space-y-2 text-gray-400 text-sm">
+                <ul className="mt-2 space-y-2 theme-copy text-sm">
                   <li className="flex items-start">
                     <span className="mr-2 text-gray-600">{"•"}</span>
                     <span>Executive member at Google Developer Student Clubs.</span>
@@ -257,43 +225,38 @@ export default function Home() {
                   </li>
                 </ul>
               </div>
-
             </div>
           </div>
         </section>
 
         {/* ================= Education ================= */}
-        <section id="education" className="mt-20 fade-up delay-5">
-          <h2 className="section-title text-2xl font-semibold mb-6 flex items-center gap-3 tracking-tight">
-            <span className="w-1.5 h-6 bg-[#00e5bf] rounded-full shadow-[0_0_10px_rgba(0,229,191,0.6)]"></span>
-            Education
-          </h2>
+        <section id="education" className="mt-20 fade-up delay-5 section-divider">
+          <SectionHeading title="Education" />
 
-          <div className="surface-panel p-6 sm:p-8 rounded-2xl">
-            <div className="relative border-l-2 border-gray-800 ml-3 pl-6 space-y-10 py-2">
+          <div className="editorial-panel p-6 sm:p-8 rounded-[2rem]">
+            <div className="relative border-l-2 theme-border-subtle ml-3 pl-6 space-y-10 py-2">
 
-              <div className="relative group">
-                <span className="w-3 h-3 absolute -left-[31px] rounded-full bg-[#00e5bf] shadow-[0_0_10px_rgba(0,229,191,0.6)] mt-1.5 group-hover:scale-125 transition-transform duration-300"></span>
+              <div className="group/item relative">
+                <span className="timeline-node w-3 h-3 absolute -left-[31px] rounded-full mt-1.5 group-hover/item:scale-125 transition-transform duration-300"></span>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
                   <div>
-                    <h3 className="text-xl font-semibold text-[#00e5bf] font-mono group-hover:text-white transition-colors duration-300">Indian Institute of Technology Patna</h3>
-                    <p className="text-gray-200 mt-1">Master of Technology in AI and DSE</p>
+                    <h3 className="text-xl font-semibold theme-accent font-mono theme-hover-foreground transition-colors duration-300">Indian Institute of Technology Patna</h3>
+                    <p className="theme-copy-strong mt-1">Master of Technology in AI and DSE</p>
                   </div>
-                  <p className="text-[#00e5bf] font-mono text-sm mt-2 sm:mt-0 whitespace-nowrap">Jan 2026 – Present</p>
+                  <p className="theme-date font-mono text-sm mt-2 sm:mt-0 whitespace-nowrap">Jan 2026 – Present</p>
                 </div>
               </div>
 
-              <div className="relative group">
-                <span className="w-3 h-3 absolute -left-[31px] rounded-full bg-[#00e5bf] shadow-[0_0_10px_rgba(0,229,191,0.6)] mt-1.5 group-hover:scale-125 transition-transform duration-300"></span>
+              <div className="group/item relative">
+                <span className="timeline-node w-3 h-3 absolute -left-[31px] rounded-full mt-1.5 group-hover/item:scale-125 transition-transform duration-300"></span>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
                   <div>
-                    <h3 className="text-xl font-semibold text-[#00e5bf] font-mono group-hover:text-white transition-colors duration-300">Lovely Professional University</h3>
-                    <p className="text-gray-200 mt-1">Bachelor of Technology in Computer Science and Engineering</p>
+                    <h3 className="text-xl font-semibold theme-accent font-mono theme-hover-foreground transition-colors duration-300">Lovely Professional University</h3>
+                    <p className="theme-copy-strong mt-1">Bachelor of Technology in Computer Science and Engineering</p>
                   </div>
-                  <p className="text-[#00e5bf] font-mono text-sm mt-2 sm:mt-0 whitespace-nowrap">Aug 2020 – Aug 2024</p>
+                  <p className="theme-date font-mono text-sm mt-2 sm:mt-0 whitespace-nowrap">Aug 2020 – Aug 2024</p>
                 </div>
               </div>
-
             </div>
           </div>
         </section>
