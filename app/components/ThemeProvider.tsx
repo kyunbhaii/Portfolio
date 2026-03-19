@@ -20,13 +20,8 @@ function applyTheme(theme: Theme) {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(() => {
-    if (typeof document !== "undefined" && document.documentElement.dataset.theme === "light") {
-      return "light";
-    }
-
-    return "dark";
-  });
+  // Always start with "light" to match SSR — avoids hydration mismatch.
+  const [theme, setThemeState] = useState<Theme>("light");
 
   const setTheme = (nextTheme: Theme) => {
     setThemeState(nextTheme);
@@ -35,6 +30,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
+
+  // On mount (client only): restore saved preference from localStorage.
+  useEffect(() => {
+    const saved = localStorage.getItem(THEME_STORAGE_KEY);
+    if (saved === "dark" || saved === "light") {
+      setThemeState(saved);
+    }
+  }, []);
 
   useEffect(() => {
     applyTheme(theme);
