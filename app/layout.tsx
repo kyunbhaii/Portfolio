@@ -1,24 +1,41 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import StaticFooter from "./components/StaticFooter";
 import FloatingDock from "./components/FloatingDock";
 import NavigationTracker from "./components/NavigationTracker";
 import { ThemeProvider } from "./components/ThemeProvider";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { profile } from "./data/site";
 
 export const metadata: Metadata = {
   title: "Vikramaditya Mishra | AI Engineer",
   description: "Portfolio of Vikramaditya Mishra - Building RAG Systems & Agentic Workflows.",
+  metadataBase: new URL(profile.siteUrl),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Vikramaditya Mishra | AI Engineer",
+    description: "Portfolio of Vikramaditya Mishra - Building RAG Systems & Agentic Workflows.",
+    url: profile.siteUrl,
+    siteName: "Vikramaditya Mishra Portfolio",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Vikramaditya Mishra portfolio preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vikramaditya Mishra | AI Engineer",
+    description: "Portfolio of Vikramaditya Mishra - Building RAG Systems & Agentic Workflows.",
+    creator: "@kyunbhaii",
+    images: ["/twitter-image"],
+  },
 };
 
 export default function RootLayout({
@@ -49,9 +66,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         <ThemeProvider>
           <NavigationTracker />
           {children}

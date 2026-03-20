@@ -223,6 +223,7 @@ function DockLinkButton({
         isActive ? "dock-active-state" : "theme-muted theme-utility-hover theme-utility-surface"
       }`}
       aria-label={link.label}
+      aria-pressed={isActive}
       onMouseEnter={() => setHoveredIndex(itemIndex)}
       onMouseLeave={() => setHoveredIndex(null)}
       onClick={() => onActivate(link)}

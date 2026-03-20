@@ -84,7 +84,7 @@ export default function ClaimLensPage() {
             {/* Reading Progress Bar */}
             <div className="fixed top-0 left-0 w-full h-[2px] theme-progress-track z-50">
                 <div
-                    className="h-full bg-[#00e5bf] shadow-[0_0_8px_rgba(0,229,191,0.6)] transition-all duration-150 ease-out"
+                    className="theme-claimlens-progress-bar h-full bg-[#00e5bf] shadow-[0_0_8px_rgba(0,229,191,0.6)] transition-all duration-150 ease-out"
                     style={{ width: `${progress}%` }}
                 />
             </div>
