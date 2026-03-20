@@ -64,9 +64,9 @@ export const achievements: AchievementEntry[] = [
     ],
   },
   {
-    title: "GDSC | AI/ML Lead",
+    title: "GDSC | AI/ML Team",
     bullets: [
-      "Executive member at Google Developer Student Clubs.",
+      "Team member at Google Developer Student Clubs.",
       "Helped organize multiple technical and ML-focused events under GDSC.",
     ],
   },
