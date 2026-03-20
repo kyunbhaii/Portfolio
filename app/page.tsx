@@ -5,10 +5,11 @@ import ProjectCard from './components/ProjectCard';
 import SectionHeading from './components/SectionHeading';
 import SkillCard from './components/SkillCard';
 import ThemeToggleButton from './components/ThemeToggleButton';
+import { TimelineItem, TimelineSection } from './components/Timeline';
 import Typewriter from './components/Typewriter';
 import UtilityTextLink from './components/UtilityTextLink';
 import { featuredProjects } from './data/projects';
-import { profile } from './data/site';
+import { achievements, education, experiences, primarySkillGroups, profile, secondarySkillGroups } from './data/site';
 
 export default function Home() {
   return (
@@ -79,38 +80,28 @@ export default function Home() {
         </section>
 
         {/* ================= Experience ================= */}
-        <section id="experience" className="fade-up delay-2 section-divider">
-          <SectionHeading title="Experience" />
-          <div className="featured-panel p-6 sm:p-8 rounded-[2rem]">
-            <div className="relative border-l-2 theme-border-subtle ml-3 pl-6 space-y-10 py-2">
-              <div className="relative group">
-                <span className="timeline-node w-3 h-3 absolute -left-[31px] rounded-full mt-1.5 group-hover:scale-125 transition-transform duration-300"></span>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
-                  <div>
-                    <h3 className="text-xl font-semibold theme-accent font-mono theme-hover-foreground transition-colors duration-300">VRCYN</h3>
-                    <p className="theme-copy-strong mt-1">Data Science Intern</p>
-                  </div>
-                  <p className="theme-date font-mono text-sm mt-2 sm:mt-0 whitespace-nowrap">Dec 2024 – May 2025</p>
+        <TimelineSection id="experience" title="Experience" className="fade-up delay-2 section-divider">
+          {experiences.map((experience) => (
+            <TimelineItem key={`${experience.company}-${experience.role}`}>
+              <div className="mb-4 flex flex-col sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <h3 className="theme-accent theme-hover-foreground font-mono text-xl font-semibold transition-colors duration-300">{experience.company}</h3>
+                  <p className="theme-copy-strong mt-1">{experience.role}</p>
                 </div>
-
-                <ul className="mt-4 space-y-2 theme-copy text-sm">
-                  <li className="flex items-start">
-                    <span className="mr-2 text-gray-600">{"•"}</span>
-                    <span>Assisted in preparing, cleaning, and structuring customer feedback datasets (chat logs and surveys) using Python, NLTK, spaCy, and SQL.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2 text-gray-600">{"•"}</span>
-                    <span>Explored and implemented NLP techniques, including LSTM-based sentiment analysis, keyword extraction, and basic topic modeling to identify customer pain points and satisfaction drivers.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2 text-gray-600">{"•"}</span>
-                    <span>Contributed to insights that supported data-driven discussions for improving product features, customer experience, and internal decision-making.</span>
-                  </li>
-                </ul>
+                <p className="theme-date mt-2 font-mono text-sm whitespace-nowrap sm:mt-0">{experience.date}</p>
               </div>
-            </div>
-          </div>
-        </section>
+
+              <ul className="mt-4 space-y-2 text-sm theme-copy">
+                {experience.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start">
+                    <span className="mr-2 text-gray-600">{"•"}</span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </TimelineItem>
+          ))}
+        </TimelineSection>
 
         {/* ================= Featured Projects ================= */}
         <section id="projects" className="mt-20 fade-up delay-3 section-divider">
@@ -156,21 +147,14 @@ export default function Home() {
 
           <div className="space-y-6">
             <div className="grid md:grid-cols-3 gap-6">
-              {[
-                { title: "AI Systems", skills: ["RAG", "LangChain", "Vector DBs"] },
-                { title: "Machine Learning", skills: ["PyTorch", "TF", "Sklearn", "YOLO"] },
-                { title: "Data & Analysis", skills: ["Pandas", "NumPy", "Matplotlib"] }
-              ].map((s) => (
+              {primarySkillGroups.map((s) => (
                 <SkillCard key={s.title} title={s.title} skills={s.skills} />
               ))}
             </div>
 
             <div className="flex justify-center">
               <div className="grid md:grid-cols-2 gap-6 max-w-2xl w-full">
-                {[
-                  { title: "Backend", skills: ["FastAPI", "Docker", "Git"] },
-                  { title: "Languages", skills: ["Python", "SQL", "C++"] }
-                ].map((s) => (
+                {secondarySkillGroups.map((s) => (
                   <SkillCard key={s.title} title={s.title} skills={s.skills} />
                 ))}
               </div>
@@ -179,87 +163,49 @@ export default function Home() {
         </section>
 
         {/* ================= Achievements ================= */}
-        <section id="achievements" className="mt-20 fade-up delay-5 section-divider">
-          <SectionHeading title="Achievements" />
-
-          <div className="editorial-panel p-6 sm:p-8 rounded-[2rem]">
-            <div className="relative border-l-2 theme-border-subtle ml-3 pl-6 space-y-10 py-2">
-
-              <div className="group/item relative">
-                <span className="timeline-node w-3 h-3 absolute -left-[31px] rounded-full mt-1.5 group-hover/item:scale-125 transition-transform duration-300"></span>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-3">
-                  <div>
-                    <h3 className="text-xl font-semibold theme-accent font-mono theme-hover-foreground transition-colors duration-300">IFERP | Conference</h3>
-                  </div>
+        <TimelineSection id="achievements" title="Achievements" className="mt-20 fade-up delay-5 section-divider">
+          {achievements.map((achievement) => (
+            <TimelineItem key={achievement.title}>
+              <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <h3 className="theme-accent theme-hover-foreground font-mono text-xl font-semibold transition-colors duration-300">{achievement.title}</h3>
+                </div>
+                {achievement.href && achievement.linkLabel ? (
                   <BoxActionLink
-                    href="https://github.com/kyunbhaii/Real-Time-Sign-Language-Detection-CNN-"
+                    href={achievement.href}
                     external
-                    className="text-xs px-3 py-1.5 ml-auto shrink-0 mt-2 sm:mt-0"
+                    className="ml-auto mt-2 shrink-0 px-3 py-1.5 text-xs sm:mt-0"
                   >
-                    GitHub ↗
+                    {achievement.linkLabel}
                   </BoxActionLink>
-                </div>
-                <ul className="mt-2 theme-copy text-sm">
-                  <li className="flex items-start">
-                    <span className="mr-2 text-gray-600">{"•"}</span>
-                    <span>Paper accepted at IFERP International Conference on &quot;Real-Time Sign Language Detection Using CNN and OpenCV&quot; (2024).</span>
-                  </li>
-                </ul>
+                ) : null}
               </div>
-
-              <div className="group/item relative">
-                <span className="timeline-node w-3 h-3 absolute -left-[31px] rounded-full mt-1.5 group-hover/item:scale-125 transition-transform duration-300"></span>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
-                  <div>
-                    <h3 className="text-xl font-semibold theme-accent font-mono theme-hover-foreground transition-colors duration-300">GDSC | AI/ML Lead</h3>
-                  </div>
-                </div>
-                <ul className="mt-2 space-y-2 theme-copy text-sm">
-                  <li className="flex items-start">
+              <ul className="mt-2 space-y-2 text-sm theme-copy">
+                {achievement.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start">
                     <span className="mr-2 text-gray-600">{"•"}</span>
-                    <span>Executive member at Google Developer Student Clubs.</span>
+                    <span>{bullet}</span>
                   </li>
-                  <li className="flex items-start">
-                    <span className="mr-2 text-gray-600">{"•"}</span>
-                    <span>Helped organize multiple technical and ML-focused events under GDSC.</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
+                ))}
+              </ul>
+            </TimelineItem>
+          ))}
+        </TimelineSection>
 
         {/* ================= Education ================= */}
-        <section id="education" className="mt-20 fade-up delay-5 section-divider">
-          <SectionHeading title="Education" />
-
-          <div className="editorial-panel p-6 sm:p-8 rounded-[2rem]">
-            <div className="relative border-l-2 theme-border-subtle ml-3 pl-6 space-y-10 py-2">
-
-              <div className="group/item relative">
-                <span className="timeline-node w-3 h-3 absolute -left-[31px] rounded-full mt-1.5 group-hover/item:scale-125 transition-transform duration-300"></span>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                  <div>
-                    <h3 className="text-xl font-semibold theme-accent font-mono theme-hover-foreground transition-colors duration-300">Indian Institute of Technology Patna</h3>
-                    <p className="theme-copy-strong mt-1">Master of Technology in AI and DSE</p>
-                  </div>
-                  <p className="theme-date font-mono text-sm mt-2 sm:mt-0 whitespace-nowrap">Jan 2026 – Present</p>
+        <TimelineSection id="education" title="Education" className="mt-20 fade-up delay-5 section-divider">
+          {education.map((entry) => (
+            <TimelineItem key={entry.institution}>
+              <div className="mb-2 flex flex-col sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <h3 className="theme-accent theme-hover-foreground font-mono text-xl font-semibold transition-colors duration-300">{entry.institution}</h3>
+                  <p className="theme-copy-strong mt-1">{entry.degree}</p>
                 </div>
+                <p className="theme-date mt-2 font-mono text-sm whitespace-nowrap sm:mt-0">{entry.date}</p>
               </div>
-
-              <div className="group/item relative">
-                <span className="timeline-node w-3 h-3 absolute -left-[31px] rounded-full mt-1.5 group-hover/item:scale-125 transition-transform duration-300"></span>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                  <div>
-                    <h3 className="text-xl font-semibold theme-accent font-mono theme-hover-foreground transition-colors duration-300">Lovely Professional University</h3>
-                    <p className="theme-copy-strong mt-1">Bachelor of Technology in Computer Science and Engineering</p>
-                  </div>
-                  <p className="theme-date font-mono text-sm mt-2 sm:mt-0 whitespace-nowrap">Aug 2020 – Aug 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+            </TimelineItem>
+          ))}
+        </TimelineSection>
 
 
 

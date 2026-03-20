@@ -67,9 +67,11 @@ export default function ProjectsPage() {
                                 return (
                                     <button
                                         key={category}
+                                        type="button"
                                         onClick={() => setActiveFilter(category)}
                                         onMouseEnter={() => setHoveredCategoryIndex(idx)}
                                         onMouseLeave={() => setHoveredCategoryIndex(null)}
+                                        aria-pressed={isActive}
                                         className={`px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-250 ease-out border ${
                                             isActive
                                                 ? "theme-filter-active"

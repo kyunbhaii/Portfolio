@@ -19,9 +19,22 @@ function applyTheme(theme: Theme) {
   document.documentElement.style.colorScheme = theme;
 }
 
+function getInitialTheme(): Theme {
+  if (typeof window === "undefined") {
+    return "light";
+  }
+
+  try {
+    const saved = localStorage.getItem(THEME_STORAGE_KEY);
+
+    return saved === "dark" || saved === "light" ? saved : "light";
+  } catch {
+    return "light";
+  }
+}
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // Always start with "light" to match SSR — avoids hydration mismatch.
-  const [theme, setThemeState] = useState<Theme>("light");
+  const [theme, setThemeState] = useState<Theme>(getInitialTheme);
 
   const setTheme = (nextTheme: Theme) => {
     setThemeState(nextTheme);
@@ -31,17 +44,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  // On mount (client only): restore saved preference from localStorage.
-  useEffect(() => {
-    const saved = localStorage.getItem(THEME_STORAGE_KEY);
-    if (saved === "dark" || saved === "light") {
-      setThemeState(saved);
-    }
-  }, []);
-
   useEffect(() => {
     applyTheme(theme);
-    localStorage.setItem(THEME_STORAGE_KEY, theme);
+
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, theme);
+    } catch {
+      // Ignore storage failures and keep the in-memory theme active.
+    }
   }, [theme]);
 
   const value = {
