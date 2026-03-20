@@ -3,7 +3,7 @@
 This portfolio showcases work in building practical AI systems, with a focus on real-world applications and scalable engineering.
 
 - **Framework:** Next.js (App Router)  
-- **Styling:** Tailwind CSS with a custom Neon Teal (`#00e5bf`) dark theme  
+- **Styling:** Tailwind CSS with a custom Light and Dark Neon Teal (`#00e5bf`) theme  
 - **UI/UX:** MacOS-style floating dock, glassmorphism components, smooth scroll interactions  
 
 ---
