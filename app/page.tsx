@@ -129,7 +129,7 @@ export default function Home() {
           <div className="flex justify-center mt-10">
             <Link
               href="/projects"
-              className="theme-cta-light-hover relative px-8 py-3 border theme-border-subtle rounded-xl theme-copy-strong overflow-hidden group transition-all duration-300 ease-out hover:border-[var(--accent)] hover:text-[var(--accent)] active:scale-[0.98]"
+              className="theme-cta-light-hover relative px-8 py-3 border theme-border-subtle rounded-xl theme-copy-strong overflow-hidden group transition-all duration-300 ease-out hover:border-[var(--accent)] hover:text-[var(--accent)] active:scale-[0.98] theme-system-design-btn"
             >
               <span className="theme-cta-fill absolute inset-0 w-0 group-hover:w-full transition-all duration-300 ease-out" />
 

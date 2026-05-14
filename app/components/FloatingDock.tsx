@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  ArrowDown,
   ArrowUp,
   Award,
   Briefcase,
@@ -249,6 +250,18 @@ export default function FloatingDock() {
   const isHome = pathname === "/";
   const hideDelay = 2200;
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isNearTop, setIsNearTop] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollableDistance = document.body.scrollHeight - window.innerHeight;
+      // Switch at 55% of total scroll distance
+      setIsNearTop(window.scrollY < scrollableDistance * 0.55);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const {
     activeSection,
@@ -319,6 +332,24 @@ export default function FloatingDock() {
         </div>
 
         <div className="h-8 w-px bg-[color:var(--border-soft)]" aria-hidden="true"></div>
+
+        <button
+          type="button"
+          onClick={() => {
+            if (isNearTop) {
+              window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+            } else {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
+          className="relative group flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 ease-out theme-muted theme-utility-hover theme-utility-surface hover:scale-[1.12]"
+          aria-label={isNearTop ? "Scroll to Bottom" : "Scroll to Top"}
+        >
+          {isNearTop ? <ArrowDown size={18} /> : <ArrowUp size={18} />}
+          <span className="dock-tooltip absolute -top-10 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-[var(--panel-solid)] border text-xs rounded-full opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+            {isNearTop ? "Scroll to Bottom" : "Scroll to Top"}
+          </span>
+        </button>
 
         <button
           type="button"

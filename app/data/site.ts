@@ -4,7 +4,7 @@ export const profile = {
   githubUrl: "https://github.com/kyunbhaii",
   xUrl: "https://x.com/kyunbhaii",
   linkedInUrl: "https://www.linkedin.com/in/scmvikram/",
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "https://drive.google.com/file/d/1jv-lTSarV3YJL_6e-bdASMQMAG2hLD5D/view?usp=sharing",
   siteUrl: "https://vikramaditya-ai.vercel.app",
 } as const;
 
@@ -86,7 +86,7 @@ export const education: EducationEntry[] = [
 ];
 
 export const primarySkillGroups: SkillGroup[] = [
-  { title: "AI Systems", skills: ["RAG", "LangChain", "Vector DBs"] },
+  { title: "AI Systems", skills: ["LangGraph", "MCP", "LangChain", "RAG", "Vector DBs"] },
   { title: "Machine Learning", skills: ["PyTorch", "TF", "Sklearn", "YOLO"] },
   { title: "Data & Analysis", skills: ["Pandas", "NumPy", "Matplotlib"] },
 ];
