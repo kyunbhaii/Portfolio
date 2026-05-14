@@ -48,7 +48,7 @@ export default function ProjectCard({
           {projectUrl && (
             <BoxActionLink
               href={projectUrl}
-              className="self-start mt-1 mb-4 text-xs px-3 py-1.5"
+              className="self-start mt-1 mb-4 text-xs px-3 py-1.5 theme-system-design-btn"
               onClick={(e) => e.stopPropagation()}
             >
               View System Design

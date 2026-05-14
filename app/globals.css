@@ -739,3 +739,7 @@ button {
 ::-webkit-scrollbar-thumb:active {
   background: var(--accent);
 }
+
+[data-theme="light"] .theme-system-design-btn {
+  border-color: #1f2937 !important;
+}

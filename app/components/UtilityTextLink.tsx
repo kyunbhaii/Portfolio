@@ -7,6 +7,7 @@ type UtilityTextLinkProps = {
   children: React.ReactNode;
   className?: string;
   external?: boolean;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
 export default function UtilityTextLink({
@@ -14,6 +15,7 @@ export default function UtilityTextLink({
   children,
   className = "",
   external = false,
+  onClick,
 }: UtilityTextLinkProps) {
   const sharedClassName = `theme-footer-link theme-utility-hover theme-utility-text hover:scale-110 transform transition-all duration-200 ease-out inline-block relative group ${className}`.trim();
   const isMailto = href.startsWith("mailto:");
@@ -28,6 +30,7 @@ export default function UtilityTextLink({
         target={isMailto ? undefined : "_blank"}
         rel={isMailto ? undefined : "noopener noreferrer"}
         className={sharedClassName}
+        onClick={onClick}
       >
         {children}
         {underline}
@@ -36,7 +39,7 @@ export default function UtilityTextLink({
   }
 
   return (
-    <Link href={href} className={sharedClassName}>
+    <Link href={href} className={sharedClassName} onClick={onClick}>
       {children}
       {underline}
     </Link>
