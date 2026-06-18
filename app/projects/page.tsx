@@ -18,7 +18,7 @@ export default function ProjectsPage() {
         <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] px-6 py-12 relative overflow-hidden soft-grid">
             <div className="absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(circle_at_top,var(--page-glow),transparent_58%)] pointer-events-none" />
 
-            <div className="max-w-7xl mx-auto fade-up">
+            <div className="max-w-5xl mx-auto fade-up">
 
                 {/* ================= Header ================= */}
                 <div className="grid grid-cols-[1fr_auto_1fr] items-center mb-10">

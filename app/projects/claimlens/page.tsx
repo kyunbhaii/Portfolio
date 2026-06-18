@@ -90,7 +90,7 @@ export default function ClaimLensPage() {
             </div>
 
             {/* Outer container */}
-            <div className="max-w-7xl mx-auto fade-up">
+            <div className="max-w-5xl mx-auto fade-up">
 
                 {/* 📄 Page Box */}
                 <div className="bg-[var(--panel-strong)] border theme-border-soft rounded-2xl p-8 md:p-12 shadow-[0_0_40px_rgb(var(--accent-rgb)/0.06)]">

@@ -19,7 +19,7 @@ export default function Home() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[var(--accent)] opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(circle_at_top,var(--page-glow),transparent_52%)] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto fade-up relative z-10">
+      <div className="max-w-5xl mx-auto fade-up relative z-10">
 
         {/* ================= Intro ================= */}
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-8 mb-20 mt-4">
@@ -60,8 +60,8 @@ export default function Home() {
           <SectionHeading title="About" className="mb-5" />
 
           <div className="editorial-panel rounded-[2rem] p-6 sm:p-8">
-            <div className="grid gap-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] xl:gap-10">
-              <div className="xl:pr-10 xl:border-r theme-border-soft">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-10">
+              <div className="lg:pr-10 lg:border-r theme-border-soft">
                 <p className="text-lg sm:text-[1.45rem] leading-relaxed theme-copy-strong max-w-2xl">
                   <span className="theme-copy-strong font-medium">AI/ML Engineer</span> focused on building production-grade <span className="theme-copy-strong font-medium">Retrieval-Augmented Generation systems</span> and intelligent workflows for real-world, high-stakes domains.
                 </p>
