@@ -43,6 +43,16 @@ export type SkillGroup = {
 
 export const experiences: ExperienceEntry[] = [
   {
+    company: "Neurapex AI",
+    role: "AI Research Engineer",
+    date: "Jun 2026 – Present",
+    bullets: [
+      "Working on research and development of multimodal AI systems for understanding and reasoning over 3D medical scans.",
+      "Exploring medical vision-language architectures, representation learning techniques, and methods for integrating volumetric imaging data with large language models.",
+      "Investigating approaches for building generalized models that can transfer across multiple medical imaging modalities rather than being restricted to a single scan type.",
+    ],
+  },
+  {
     company: "VRCYN",
     role: "Data Science Intern",
     date: "Dec 2024 – May 2025",
