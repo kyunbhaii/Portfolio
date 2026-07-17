@@ -61,18 +61,18 @@ export default function Home() {
 
           <div className="editorial-panel rounded-[2rem] p-6 sm:p-8">
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-10">
-              <div className="lg:pr-10 lg:border-r theme-border-soft">
+              <div className="lg:pr-10 lg:border-r theme-border-soft flex flex-col justify-center">
                 <p className="text-lg sm:text-[1.45rem] leading-relaxed theme-copy-strong max-w-2xl">
-                  <span className="theme-copy-strong font-medium">AI/ML Engineer</span> focused on building production-grade <span className="theme-copy-strong font-medium">Retrieval-Augmented Generation systems</span> and intelligent workflows for real-world, high-stakes domains.
+                  I'm an <span className="theme-copy-strong font-medium">AI Engineer</span> who builds systems that actually work, translating research papers into <span className="theme-copy-strong font-medium">production AI</span> and <span className="theme-copy-strong font-medium">intelligent agents</span> that solve real problems.
                 </p>
               </div>
 
               <div className="theme-copy space-y-4 leading-relaxed max-w-2xl">
                 <p>
-                  I work across the full stack of modern AI, <span className="theme-copy-strong font-medium">LangChain, LangGraph, MCP, Vector Databases,</span> and <span className="theme-copy-strong font-medium">Pydantic</span>, with a focus on structured retrieval, evaluation frameworks, and reliable <span className="theme-copy-strong font-medium">LLM</span> reasoning pipelines.
+                  Right now, I'm at <span className="theme-copy-strong font-medium">Grant Thornton INDUS</span>, where I spend my days building LLM pipelines that automate the messy parts of business operations. Before this, I was researching multimodal medical AI at Neurapex.
                 </p>
                 <p>
-                  I care about systems that work under constraints, not just demos that work on clean data. You can find me on <InlineAccentLink href={profile.xUrl}>X</InlineAccentLink> and <InlineAccentLink href={profile.linkedInUrl}>LinkedIn</InlineAccentLink>.
+                  Most of my work involves the engineering side of AI, figuring out how to make LLMs retrieve reliably, reason properly, and use tools without breaking in production. You can find me talking about it on <InlineAccentLink href={profile.xUrl}>X</InlineAccentLink> and <InlineAccentLink href={profile.linkedInUrl}>LinkedIn</InlineAccentLink>.
                 </p>
               </div>
             </div>
