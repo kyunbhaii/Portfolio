@@ -43,13 +43,25 @@ export type SkillGroup = {
 
 export const experiences: ExperienceEntry[] = [
   {
+    company: "Grant Thornton INDUS",
+    role: "AI DevSecOps Engineer",
+    date: "Jul 2026 – Present",
+    bullets: [
+      "Developing enterprise AI agents for workflow orchestration and intelligent task automation using Large Language Models (LLMs) and agentic workflows.",
+      "Building an AI-powered Task Orchestration Agent that automates task assignment, reminder generation, completion tracking, escalations, and operational reporting.",
+      "Designing rule-based workflow orchestration by integrating task ownership, scheduling, business rules, and enterprise systems.",
+      "Collaborating with cross-functional teams to build production-ready AI solutions for internal operations and process automation.",
+    ],
+  },
+  {
     company: "Neurapex AI",
     role: "AI Research Engineer",
-    date: "Jun 2026 – Present",
+    date: "Jun 2026 – Jul 2026",
     bullets: [
-      "Working on research and development of multimodal AI systems for understanding and reasoning over 3D medical scans.",
-      "Exploring medical vision-language architectures, representation learning techniques, and methods for integrating volumetric imaging data with large language models.",
-      "Investigating approaches for building generalized models that can transfer across multiple medical imaging modalities rather than being restricted to a single scan type.",
+      "Researched multimodal AI systems for 3D medical imaging using vision-language models across CT and MRI modalities.",
+      "Designed AI pipeline architectures compatible with DICOM imaging standards and PACS-based clinical imaging workflows.",
+      "Evaluated medical vision-language models and representation learning techniques for volumetric/3D medical imaging.",
+      "Explored generalized multimodal learning approaches for building foundation models that transfer across multiple medical imaging modalities.",
     ],
   },
   {
@@ -96,7 +108,7 @@ export const education: EducationEntry[] = [
 ];
 
 export const primarySkillGroups: SkillGroup[] = [
-  { title: "AI Systems", skills: ["LangGraph", "MCP", "LangChain", "RAG", "Vector DBs"] },
+  { title: "LLM / GenAI", skills: ["LLMs", "RAG", "AI Agents", "LangChain", "LangGraph", "MCP", "Copilot Studio"] },
   { title: "Machine Learning", skills: ["PyTorch", "TF", "Sklearn", "YOLO"] },
   { title: "Data & Analysis", skills: ["Pandas", "NumPy", "Matplotlib"] },
 ];
