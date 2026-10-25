@@ -8,14 +8,14 @@ import { profile } from "./data/site";
 
 export const metadata: Metadata = {
   title: "Vikramaditya Mishra | AI Engineer",
-  description: "Portfolio of Vikramaditya Mishra - Building RAG Systems & Agentic Workflows.",
+  description: "Portfolio of Vikramaditya Mishra - Building Agentic AI Systems & Multimodal Pipelines.",
   metadataBase: new URL(profile.siteUrl),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Vikramaditya Mishra | AI Engineer",
-    description: "Portfolio of Vikramaditya Mishra - Building RAG Systems & Agentic Workflows.",
+    description: "Portfolio of Vikramaditya Mishra - Building Agentic AI Systems & Multimodal Pipelines.",
     url: profile.siteUrl,
     siteName: "Vikramaditya Mishra Portfolio",
     locale: "en_US",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Vikramaditya Mishra | AI Engineer",
-    description: "Portfolio of Vikramaditya Mishra - Building RAG Systems & Agentic Workflows.",
+    description: "Portfolio of Vikramaditya Mishra - Building Agentic AI Systems & Multimodal Pipelines.",
     creator: "@kyunbhaii",
     images: ["/twitter-image"],
   },

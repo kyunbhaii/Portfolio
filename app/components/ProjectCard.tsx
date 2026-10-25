@@ -16,6 +16,19 @@ interface ProjectCardProps {
   dateLayout?: 'inline' | 'subtitle';
 }
 
+function renderBold(text: string) {
+  const parts = text.split(/\*\*(.*?)\*\*/g);
+  return parts.map((part, i) =>
+    i % 2 === 1 ? (
+      <strong key={i} className="font-semibold theme-copy-strong">
+        {part}
+      </strong>
+    ) : (
+      part
+    )
+  );
+}
+
 export default function ProjectCard({
   title,
   description,
@@ -64,7 +77,7 @@ export default function ProjectCard({
               {details.map((detail, idx) => (
                 <li key={idx} className="flex items-start">
                   <span className="theme-bullet mr-2">{"•"}</span>
-                  <span>{detail}</span>
+                  <span>{renderBold(detail)}</span>
                 </li>
               ))}
             </ul>
