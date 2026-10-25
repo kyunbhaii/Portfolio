@@ -47,10 +47,10 @@ export const experiences: ExperienceEntry[] = [
     role: "AI DevSecOps Engineer",
     date: "Jul 2026 – Present",
     bullets: [
-      "Developing enterprise AI agents for workflow orchestration and intelligent task automation using Large Language Models (LLMs) and agentic workflows.",
-      "Building an AI-powered Task Orchestration Agent that automates task assignment, reminder generation, completion tracking, escalations, and operational reporting.",
-      "Designing rule-based workflow orchestration by integrating task ownership, scheduling, business rules, and enterprise systems.",
-      "Collaborating with cross-functional teams to build production-ready AI solutions for internal operations and process automation.",
+      "Implemented a **multimodal AI triage pipeline** using **LangChain** and GPT-based models to process email bodies and image, PDF, and Word attachments, automate ServiceNow ticket creation and routing, and reduce estimated processing time from **15–20 minutes to 20–30 seconds per ticket** (~**98–99% reduction**).",
+      "Built attachment-specific **image-analysis and document-extraction workflows**, combining email and attachment context with ServiceNow assignment-group knowledge to generate structured, ticket-ready JSON.",
+      "Integrated **prompt-injection screening, sender-domain validation, and automated-email detection** into the triage workflow to strengthen security and improve routing reliability.",
+      "Developed a **runbook assistant** using **Copilot Studio** and **SharePoint** to provide grounded answers from approved procedures through Microsoft Teams, with **Power Automate** synchronizing updated runbooks to the agent's knowledge repository.",
     ],
   },
   {
@@ -58,20 +58,10 @@ export const experiences: ExperienceEntry[] = [
     role: "AI Research Engineer",
     date: "Jun 2026 – Jul 2026",
     bullets: [
-      "Researched multimodal AI systems for 3D medical imaging using vision-language models across CT and MRI modalities.",
-      "Designed AI pipeline architectures compatible with DICOM imaging standards and PACS-based clinical imaging workflows.",
-      "Evaluated medical vision-language models and representation learning techniques for volumetric/3D medical imaging.",
-      "Explored generalized multimodal learning approaches for building foundation models that transfer across multiple medical imaging modalities.",
-    ],
-  },
-  {
-    company: "VRCYN",
-    role: "Data Science Intern",
-    date: "Dec 2024 – May 2025",
-    bullets: [
-      "Assisted in preparing, cleaning, and structuring customer feedback datasets (chat logs and surveys) using Python, NLTK, spaCy, and SQL.",
-      "Explored and implemented NLP techniques, including LSTM-based sentiment analysis, keyword extraction, and basic topic modeling to identify customer pain points and satisfaction drivers.",
-      "Contributed to insights that supported data-driven discussions for improving product features, customer experience, and internal decision-making.",
+      "Built a Python pipeline for the **CT-RATE dataset**, automating NIfTI volume downloads, **Hounsfield Unit (HU) calibration**, three-window CT image generation (lung, soft tissue, bone), and VQA dataset preparation.",
+      "Adapted **Google MedGemma 1.5 (4B)** for volumetric CT inference using custom slice selection, multi-window preprocessing, and batch inference; identified and corrected a preprocessing issue that could destroy diagnostic HU information.",
+      "Investigated **M3D-LaMed and Hulu-Med 7B** for 3D medical vision-language tasks, examining volumetric preprocessing, visual tokenization, spatial pooling, and vision-language integration; implemented inference scripts and experimented with alternative input representations.",
+      "Built a **radiology report evaluation framework** supporting **METEOR and BERTScore**, with per-volume scoring and JSON/CSV input support to evaluate generated reports against reference reports.",
     ],
   },
 ];

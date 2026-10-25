@@ -12,6 +12,18 @@ import { featuredProjects } from './data/projects';
 import { achievements, education, experiences, primarySkillGroups, profile, secondarySkillGroups } from './data/site';
 
 export default function Home() {
+  function renderBold(text: string) {
+    const parts = text.split(/\*\*(.*?)\*\*/g);
+    return parts.map((part, i) =>
+      i % 2 === 1 ? (
+        <strong key={i} className="font-semibold theme-copy-strong">
+          {part}
+        </strong>
+      ) : (
+        part
+      )
+    );
+  }
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] px-6 py-12 relative overflow-hidden soft-grid">
 
@@ -31,7 +43,7 @@ export default function Home() {
               <Typewriter text="AI Engineer | Generative AI | LLM" speed={60} delay={400} />
             </p>
             <p className="text-sm sm:text-base theme-muted leading-relaxed max-w-2xl">
-              Building GenAI systems, open-source AI projects, and exploring LLM workflows with a focus on experimentation, reliability, and real-world impact.
+              Production AI. Open source. Occasional X takes nobody asked for.
             </p>
           </div>
 
@@ -59,23 +71,16 @@ export default function Home() {
         <section id="about" className="mb-16 fade-up delay-1">
           <SectionHeading title="About" className="mb-5" />
 
-          <div className="editorial-panel rounded-[2rem] p-6 sm:p-8">
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-10">
-              <div className="lg:pr-10 lg:border-r theme-border-soft flex flex-col justify-center">
-                <p className="text-lg sm:text-[1.45rem] leading-relaxed theme-copy-strong max-w-2xl">
-                  I'm an <span className="theme-copy-strong font-medium">AI Engineer</span> who builds systems that actually work, translating research papers into <span className="theme-copy-strong font-medium">production AI</span> and <span className="theme-copy-strong font-medium">intelligent agents</span> that solve real problems.
-                </p>
-              </div>
-
-              <div className="theme-copy space-y-4 leading-relaxed max-w-2xl">
-                <p>
-                  Right now, I'm at <span className="theme-copy-strong font-medium">Grant Thornton INDUS</span>, where I spend my days building LLM pipelines that automate the messy parts of business operations. Before this, I was researching multimodal medical AI at Neurapex.
-                </p>
-                <p>
-                  Most of my work involves the engineering side of AI, figuring out how to make LLMs retrieve reliably, reason properly, and use tools without breaking in production. You can find me talking about it on <InlineAccentLink href={profile.xUrl}>X</InlineAccentLink> and <InlineAccentLink href={profile.linkedInUrl}>LinkedIn</InlineAccentLink>.
-                </p>
-              </div>
-            </div>
+          <div className="soft-panel space-y-4 rounded-2xl p-6 sm:p-8">
+            <p className="text-lg sm:text-[1.45rem] leading-relaxed theme-copy-strong">
+              <span className="theme-copy-strong font-medium">AI Engineer</span> who builds systems that actually work, translating research into <span className="theme-copy-strong font-medium">production AI</span> and <span className="theme-copy-strong font-medium">agentic systems</span> that solve real problems.
+            </p>
+            <p className="text-sm sm:text-base theme-copy leading-relaxed">
+              At <span className="theme-copy-strong font-medium">Grant Thornton INDUS</span>, I take messy enterprise workflows and replace them with AI that actually runs in production.
+            </p>
+            <p className="text-sm sm:text-base theme-copy leading-relaxed">
+              Most of my work involves the engineering side of AI, figuring out how to make LLMs retrieve reliably, reason properly, and use tools without breaking in production. You can find me talking about it on <InlineAccentLink href={profile.xUrl}>X</InlineAccentLink> and <InlineAccentLink href={profile.linkedInUrl}>LinkedIn</InlineAccentLink>.
+            </p>
           </div>
         </section>
 
@@ -95,7 +100,7 @@ export default function Home() {
                 {experience.bullets.map((bullet) => (
                   <li key={bullet} className="flex items-start">
                     <span className="mr-2 text-gray-600">{"•"}</span>
-                    <span>{bullet}</span>
+                    <span>{renderBold(bullet)}</span>
                   </li>
                 ))}
               </ul>
